@@ -41,14 +41,15 @@ public class WorkWithMongo {
 
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(
                     // new BasicDBObject().append("gentime",Long.parseLong("291864243384363"))
-                      new Document().append("rxDevice", new Document("$lte",1567)  )
+                      new Document().append("rxDevice", new Document("$lte",1567) )
                               .append("fileId", 1158354).append("txRandom",-9018)
-                    //.append("_id","56fc020a8dd9ce97b37b5ebb")
-                 .append("gentime", new Document("$type","long"))
+                    .append("gentime", new Document("$type","long").getLong(Long.parseLong("291864243384363")))
+                  // .append("gentime",new Document("$lte",Long.parseLong("291864243384363")))
+                   // .append("_id","56fc020a8dd9ce97b37b5ebf")
             ).iterator();
 
 
-            //System.out.println(cursor.toString());
+            //System.out.println("291864243384363  "+Long.parseLong("291864243384363"));
             int i = 0;
             try {
                 while (cursor.hasNext()) {
