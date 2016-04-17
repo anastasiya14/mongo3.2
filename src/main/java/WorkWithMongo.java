@@ -38,9 +38,9 @@ public class WorkWithMongo {
             MongoCollection<Document> collection = db.getCollection("traffic");
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(
                     new Document().append("rxDevice", new Document("$ne", rxDevice))
-                            .append("gentime", new Document("$lte", gentime + 1000000))
-                            .append("gentime", new Document("$gte", gentime - 1000000))
-            ).limit(5).iterator();
+                            .append("gentime", new Document("$lte", gentime + 500000000))
+                            .append("gentime", new Document("$gte", gentime - 500000000))
+            ).limit(25).iterator();
 
             try {
                 while (cursor.hasNext()) {
