@@ -31,7 +31,7 @@ public class main {
         //   System.out.println(mongoData.getGentime());
 
         WorkWithMongo work = new WorkWithMongo();
-        work.MongoConnect();
+        work.MongoConnect(1566,291864241984361L);
 
     }
 }

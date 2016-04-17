@@ -24,7 +24,7 @@ import java.util.Properties;
 public class WorkWithMongo {
     private MongoCursor<Document> cursor;
 
-    public void MongoConnect() throws Exception {
+    public void MongoConnect(int rxDevice, long gentime) throws Exception {
         MongoClient mongoClient = null;
         Map<String, Object> fields = new HashMap();
         //  BasicDBObject regexQuery = new BasicDBObject();
@@ -34,33 +34,18 @@ public class WorkWithMongo {
             mongoClient = new MongoClient();
             // New way to get database
             MongoDatabase db = mongoClient.getDatabase("moto");
-            // DBCollection dbCollection();
             // New way to get collection
             MongoCollection<Document> collection = db.getCollection("traffic");
-            // System.out.println("collection: " + collection.toString());
-
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(
-                    // new BasicDBObject().append("gentime",Long.parseLong("291864243384363"))
-                      new Document().append("rxDevice", new Document("$lte",1567) )
-                              .append("fileId", 1158354).append("txRandom",-9018)
-                    .append("gentime", new Document("$type","long").getLong(Long.parseLong("291864243384363")))
-                  // .append("gentime",new Document("$lte",Long.parseLong("291864243384363")))
-                   // .append("_id","56fc020a8dd9ce97b37b5ebf")
-            ).iterator();
+                    new Document().append("rxDevice", new Document("$ne", rxDevice))
+                            .append("gentime", new Document("$lte", gentime + 1000000))
+                            .append("gentime", new Document("$gte", gentime - 1000000))
+            ).limit(5).iterator();
 
-
-            //System.out.println("291864243384363  "+Long.parseLong("291864243384363"));
-            int i = 0;
             try {
                 while (cursor.hasNext()) {
-                    i++;
+
                     System.out.println(cursor.next());
-                    if (i > 15
-
-
-                            ) {
-                        break;
-                    }
                 }
                 mongoClient.close();
             } catch (Exception w) {
