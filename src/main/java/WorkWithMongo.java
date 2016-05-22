@@ -10,10 +10,7 @@ import static com.mongodb.client.model.Filters.*;
 
 
 import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 
 /**
@@ -23,31 +20,48 @@ import java.util.Properties;
  */
 public class WorkWithMongo {
     //TODO исправить этот треш
+    /**
+     */
+
     private MongoCursor<Document> cursor;
-    private final double longitudeKm = 0.4499;
-    private final double equator = 111321.3778;
+    //private final double longitudeKm = 0.4499;
+    // private final double equator = 111321.3778;
 
-    public void MongoConnect(int fileIdstart, long gentime, double latitude,
-                             double longitude, double latitudeEnd, double longitudeEnd,
-                             int fileIdend) throws Exception {
+    public void MongoConnect(Map<List<String>, List<String>> mapFileId) throws Exception {
 
-        double eps = (355 * 100) / (equator * Math.cos(latitude * Math.PI / 180));
         MongoClient mongoClient = null;
         try {
-            mongoClient = new MongoClient("10.130.101.9", 27017);
-            // mongoClient = new MongoClient("127.0.0.1",27017);
+            List<String> fileid = new ArrayList<String>();
+            List<String> location = new ArrayList<String>();
 
+            mongoClient = new MongoClient("10.130.101.9", 27017);
+            BasicDBObject filter = new BasicDBObject("$nearSphere", new double[]{-73.99171, 40.738868});
             // New way to get database
             MongoDatabase db = mongoClient.getDatabase("moto");
             MongoCollection<Document> collection = db.getCollection("traffic");
-            MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(and(
-                    lte("gentime", gentime + 500000000),
-                    gte("gentime", gentime - 500000000)
-                  //  lte("longitude", longitude + longitudeKm),//меньше
-                  //  gte("longitude", longitude - longitudeKm), //больше
-                  //  lte("latitude", latitude + eps),
-                  //  gte("latitude", latitude - eps)
-                    )
+            mapFileId.values();
+
+
+            for (List<String> keyList : mapFileId.keySet()) {
+                fileid = keyList;
+            }
+
+            for (List<String> keyList : mapFileId.values()) {
+                location = keyList;
+            }
+
+            //   for (String str : fileid) {
+                 /*тут будет браться id и координаты и будет делаться запрос*/
+            //   }
+
+            MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(//and(
+                    //  lte("gentime", gentime + 500000000),
+                    //  gte("gentime", gentime - 500000000)
+                    //  lte("longitude", longitude + longitudeKm),//меньше
+                    //  gte("longitude", longitude - longitudeKm), //больше
+                    //  lte("latitude", latitude + eps),
+                    //  gte("latitude", latitude - eps)
+                    // near("loc",) //)
             ).iterator();
 
             try {
