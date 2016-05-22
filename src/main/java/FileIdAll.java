@@ -9,8 +9,7 @@ import java.util.Set;
  */
 public interface FileIdAll {
 
-    public List<String> FindFileId() throws UnknownHostException; // потом можно добавить на вход параметры подкл к бд
+    public Set<String> FindFileId() throws UnknownHostException;
 
-    public Set<String> filterList(List<String> listFileId); //удалит все дубликаты
 
 }

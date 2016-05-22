@@ -32,14 +32,11 @@ public class main {
 
         WorkWithMongo work = new WorkWithMongo();
 
+
        // 276176202742830L
       //  work.MongoConnect(1294579,276176202742830L,42.411171,-83.874336,45.411171,-82.874336,129454);
 
-
-
         FileIdAllImpl fileIdAll=new FileIdAllImpl();
-       // List<String> list = fileIdAll.FindFileId();
-       ;
-        System.out.println( fileIdAll.filterList(fileIdAll.FindFileId()));
+        System.out.println(fileIdAll.FindFileId());
     }
 }

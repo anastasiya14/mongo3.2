@@ -20,9 +20,9 @@ import static com.mongodb.client.model.Filters.and;
  */
 public class FileIdAllImpl implements FileIdAll {
 
-    public List<String> FindFileId() throws UnknownHostException {
+    public Set<String> FindFileId() throws UnknownHostException {
         MongoClient mongoClient = null;
-        List<String> listFileId =new ArrayList<String>();
+        Set<String> set = new HashSet<String>();
 
         try {
             JsonFactory jfactory = new JsonFactory();
@@ -33,14 +33,13 @@ public class FileIdAllImpl implements FileIdAll {
             MongoCollection<Document> collection = db.getCollection("test2");
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.include("fileId"), Projections.excludeId()))
-                    //.limit(2000)
+                    .limit(2000)
                     .iterator();
             try {
                 String resultId = null;
                 while (cursor.hasNext()) {
                     resultId = cursor.next().toString().replaceAll("^D[A-Za-z\\{=]+", "").replaceAll("\\}}", "");
-                   // System.out.println(resultId);
-                    listFileId.add(resultId);
+                    set.add(resultId);
                 }
                 mongoClient.close();
             } catch (Exception w) {
@@ -49,16 +48,9 @@ public class FileIdAllImpl implements FileIdAll {
             mongoClient.close();
         }
 
-
-        return listFileId;
+        System.out.println(set.size());
+        return set;
     }
 
-
-
-    public Set<String> filterList(List<String> listFileId) {
-
-        Set<String> set = new HashSet<String>(listFileId);
-        return  set;
-    }
 
 }
