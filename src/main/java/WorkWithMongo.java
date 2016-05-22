@@ -42,13 +42,13 @@ public class WorkWithMongo {
             MongoCollection<Document> collection = db.getCollection("traffic");
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(and(
                     lte("gentime", gentime + 500000000),
-                    gte("gentime", gentime - 500000000),
-                    lte("longitude", longitude + longitudeKm),//меньше
-                    gte("longitude", longitude - longitudeKm), //больше
-                    lte("latitude", latitude + eps),
-                    gte("latitude", latitude - eps)
+                    gte("gentime", gentime - 500000000)
+                  //  lte("longitude", longitude + longitudeKm),//меньше
+                  //  gte("longitude", longitude - longitudeKm), //больше
+                  //  lte("latitude", latitude + eps),
+                  //  gte("latitude", latitude - eps)
                     )
-            ).limit(50000).iterator();
+            ).iterator();
 
             try {
                 while (cursor.hasNext()) {

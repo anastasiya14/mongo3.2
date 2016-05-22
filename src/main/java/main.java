@@ -2,7 +2,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-
+import java.util.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -31,8 +31,15 @@ public class main {
         //   System.out.println(mongoData.getGentime());
 
         WorkWithMongo work = new WorkWithMongo();
-       // 276176202742830L
-        work.MongoConnect(1294579,276176202742830L,42.411171,-83.874336,45.411171,-82.874336,129454);
 
+       // 276176202742830L
+      //  work.MongoConnect(1294579,276176202742830L,42.411171,-83.874336,45.411171,-82.874336,129454);
+
+
+
+        FileIdAllImpl fileIdAll=new FileIdAllImpl();
+       // List<String> list = fileIdAll.FindFileId();
+       ;
+        System.out.println( fileIdAll.filterList(fileIdAll.FindFileId()));
     }
 }
