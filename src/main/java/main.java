@@ -39,5 +39,7 @@ public class main {
 
         FileIdAllImpl fileIdAll = new FileIdAllImpl();
         System.out.println(fileIdAll.FindFileId());
+
+        work.MongoConnect(fileIdAll.FindFileId());
     }
 }

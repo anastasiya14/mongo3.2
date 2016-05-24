@@ -1,6 +1,7 @@
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,113 +15,59 @@ public class MongoData {
     public MongoData() {
     }
 
-    public MongoData(int confidence, double speed, float radiusOfCurve, float longitude,
-                     double heading, long gentime, long fileld, float latitude) {
-        Confidence = Confidence;
-        Speed = speed;
-        RadiusOfCurve = radiusOfCurve;
-        Longitude = longitude;
-        Heading = heading;
-        Gentime = gentime;
-        Fileld = fileld;
-        Latitude = latitude;
+    public MongoData(long fileId, double weekDay, double dayTime, List loc) {
+        this.fileId = fileId;
+        this.weekDay = weekDay;
+        this.dayTime = dayTime;
+        this.loc = loc;
     }
 
-    private Map<String, String> _id;
-    private double Speed; //Real m/sec
-    private int Confidence; //Integer
-    private long Fileld; //Integer
-    private long Gentime; //Integer
-    private double Heading; //Real Degrees
-    private float Latitude; //Float
-    private float Longitude; //Float
-    private float RadiusOfCurve; //Float
+    //private Map<String, String> _id;
+    private long fileId; //Integer
+    private double dayTime;
+    private double weekDay;
+    private List loc;
 
-
-    public int getConfidence() {
-        return Confidence;
+    public List getLoc() {
+        return loc;
     }
 
-    public void setConfidence(int confidence) {
-        Confidence = confidence;
+    public void setLoc(List loc) {
+        this.loc = loc;
     }
 
-    public Map<String, String> get_id() {
-        return _id;
+    public double getDayTime() {
+        return dayTime;
     }
 
-    public void set_id(Map<String, String> _id) {
-        this._id = _id;
+    public void setDayTime(double dayTime) {
+        this.dayTime = dayTime;
     }
 
-    public long getFileld() {
-        return Fileld;
+    public double getWeekDay() {
+        return weekDay;
     }
 
-    public void setFileld(long fileld) {
-        Fileld = fileld;
+    public void setWeekDay(double weekDay) {
+        this.weekDay = weekDay;
     }
 
-    public long getGentime() {
-        return Gentime;
+
+    public long getFileId() {
+        return fileId;
     }
 
-    public void setGentime(long gentime) {
-        Gentime = gentime;
-    }
-
-    public double getHeading() {
-        return Heading;
-    }
-
-    public void setHeading(double heading) {
-        Heading = heading;
-    }
-
-    public float getLatitude() {
-        return Latitude;
-    }
-
-    public void setLatitude(float latitude) {
-        Latitude = latitude;
-    }
-
-    public float getLongitude() {
-        return Longitude;
-    }
-
-    public void setLongitude(float longitude) {
-        Longitude = longitude;
-    }
-
-    public float getRadiusOfCurve() {
-        return RadiusOfCurve;
-    }
-
-    public void setRadiusOfCurve(float radiusOfCurve) {
-        RadiusOfCurve = radiusOfCurve;
-    }
-
-    public double getSpeed() {
-        return Speed;
-    }
-
-    public void setSpeed(double speed) {
-        Speed = speed;
+    public void setFileId(long fileId) {
+        this.fileId = fileId;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("Confidence", Confidence)
-                .append("Fileld", Fileld)
-                .append("Gentime", Gentime)
-                .append("Heading", Heading)
-                .append("Latitude", Latitude)
-                .append("Longitude", Longitude)
-                .append("RadiusOfCurve", RadiusOfCurve)
-                .append("Speed", Speed)
-                .append("_id", _id)
+                .append("fileId", fileId)
+                .append("dayTime", dayTime)
+                .append("weekDay", weekDay)
+                .append("loc", loc)
                 .toString();
     }
 }

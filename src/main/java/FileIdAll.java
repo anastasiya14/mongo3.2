@@ -1,6 +1,5 @@
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created: 22.05.16 12:07
@@ -9,7 +8,7 @@ import java.util.Map;
  */
 public interface FileIdAll {
 
-    public Map<List<String>, List<String>> FindFileId() throws UnknownHostException;
+    public List<String> FindFileId() throws UnknownHostException;
 
 
 }
