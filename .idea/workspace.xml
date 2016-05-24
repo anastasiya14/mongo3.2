@@ -822,7 +822,7 @@
       <workItem from="1463824376982" duration="3893000" />
       <workItem from="1463907883697" duration="2878000" />
       <workItem from="1463913172303" duration="23132000" />
-      <workItem from="1464120435523" duration="1437000" />
+      <workItem from="1464120435523" duration="1611000" />
     </task>
     <task id="LOCAL-00001" summary="Получает все данные с базы и парсит JSON c помощью Jakson">
       <created>1459185273344</created>
@@ -890,11 +890,17 @@
       <option name="project" value="LOCAL" />
       <updated>1464121523099</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Находит все id (без повторений)">
+      <created>1464121877802</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1464121877802</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82752000" />
+    <option name="totallyTimeSpent" value="82926000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
