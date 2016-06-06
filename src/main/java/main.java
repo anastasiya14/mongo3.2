@@ -1,11 +1,11 @@
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.map.JsonMappingException;
+import Interfaces.FilterSubMesh;
+import Interfaces.Impl.FilterSubMeshImpl;
+import Interfaces.Impl.NumberSquareAllImpl;
+import Interfaces.NumbersSquareAll;
+
+import POJOjson.MongoData;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import java.util.List;
-import java.io.File;
-import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -37,9 +37,13 @@ public class main {
         // 276176202742830L
         //  work.MongoConnect(1294579,276176202742830L,42.411171,-83.874336,45.411171,-82.874336,129454);
 
-        FileIdAllImpl fileIdAll = new FileIdAllImpl();
-        System.out.println(fileIdAll.FindFileId());
+        //  FileIdAllImpl fileIdAll = new FileIdAllImpl();
+        //  System.out.println(fileIdAll.FindFileId());
 
-        work.MongoConnect(fileIdAll.FindFileId());
+        // work.MongoConnect(fileIdAll.FindFileId());
+        NumbersSquareAll d = new NumberSquareAllImpl();
+
+        FilterSubMesh df=new FilterSubMeshImpl();
+        df.filterSubMesh(d.findSquareAllId());
     }
 }

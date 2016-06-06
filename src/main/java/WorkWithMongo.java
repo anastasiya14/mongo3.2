@@ -1,23 +1,17 @@
 
+import POJOjson.MongoData;
 import com.mongodb.*;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Projections;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.bson.*;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 
 import static com.mongodb.client.model.Filters.*;
 
 
-import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.*;
 
 
@@ -32,13 +26,13 @@ public class WorkWithMongo {
      */
 
     private MongoCursor<Document> cursor;
-    //private final double longitudeKm = 0.4499;
-    // private final double equator = 111321.3778;
+
+    private static final int timeZone = 288;
 
     public void MongoConnect(List<String> fileId) throws Exception {
-        //срез по времени пока для одного id, по столбцу минут с начала дня.
         MongoClient mongoClient = null;
         try {
+
             Long gentime = 292075345520544L;
             List<String> fileid = new ArrayList<String>();
             List<String> result = new ArrayList<String>();
@@ -60,26 +54,20 @@ public class WorkWithMongo {
             MongoCollection<Document> collection = db.getCollection("test2");
 
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(and(
-
-                    //  lte("dayTime", dayTime + 5),//меньше
-                    //   gte("dayTime", dayTime - 5),//больше
-                    //    near("loc", -83.87365, 42.404968, (double) 500, (double) 0)
-
-
                     near("loc", -83.87365, 42.404968, (double) 500, (double) 0),
                     lte("dayTime", dayTime + 5),//меньше
                     gte("dayTime", dayTime - 5)//больше
             ))
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(limit)
+                    // .limit(limit)
                     .iterator();
 
-
+            int i = 0;
             try {
                 while (cursor.hasNext()) {
                     String json = cursor.next().toJson();
                     System.out.println(json);
-
+                    i++;
                     // this is the key object to convert JSON to Java
                     ObjectMapper mapper = new ObjectMapper();
                     MongoData mongoData = mapper.readValue(json, MongoData.class);
@@ -111,7 +99,8 @@ public class WorkWithMongo {
                 System.out.println(result);
 
                 System.out.println("Получено точек после фильтрации: " + result.size());
-                System.out.println("Отфильтрованно точек: " + (limit - result.size()));
+                //System.out.println("Отфильтрованно точек: " + (limit - result.size()));
+                System.out.println("Отфильтрованно точек: " + (i - result.size()));
                 mongoClient.close();
             } catch (Exception w) {
             }

@@ -1,3 +1,5 @@
+package Interfaces;
+
 import java.net.UnknownHostException;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
  */
 public interface FileIdAll {
 
-    public List<String> FindFileId() throws UnknownHostException;
+    public List<String> FindFileId();
 
 
 }

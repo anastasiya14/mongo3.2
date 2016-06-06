@@ -1,3 +1,5 @@
+package POJOjson;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -60,6 +62,8 @@ public class MongoData {
     public void setFileId(long fileId) {
         this.fileId = fileId;
     }
+
+
 
     @Override
     public String toString() {
