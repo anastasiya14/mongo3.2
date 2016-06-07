@@ -42,8 +42,8 @@ public class main {
 
         // work.MongoConnect(fileIdAll.FindFileId());
         NumbersSquareAll d = new NumberSquareAllImpl();
-
+       // d.findSquareAllId();
         FilterSubMesh df=new FilterSubMeshImpl();
-        df.filterSubMesh(d.findSquareAllId());
+       df.filterSubMesh(d.findSquareAllId());
     }
 }

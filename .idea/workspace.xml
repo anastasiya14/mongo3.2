@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e854e352-1a0d-4ef6-a9de-b3228d581c94" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_7_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Assessment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/FilterMesh.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/FilterSubMesh.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/AssessmentImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/NumberSquareAllImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/NumbersSquareAll.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/POJOjson/nSquare.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/FileIdAll.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/FileIdAllImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/MongoData.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/FileIdAll.java" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/FileIdAll.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/FileIdAllImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FileIdAllImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/MongoData.java" afterPath="$PROJECT_DIR$/src/main/java/POJOjson/MongoData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WorkWithMongo.class" afterPath="$PROJECT_DIR$/target/classes/WorkWithMongo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main.class" afterPath="$PROJECT_DIR$/target/classes/main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sliceMongo.iml" afterPath="$PROJECT_DIR$/sliceMongo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/WorkWithMongo.java" afterPath="$PROJECT_DIR$/src/main/java/WorkWithMongo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/NumberSquareAllImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/NumberSquareAllImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main.java" afterPath="$PROJECT_DIR$/src/main/java/main.java" />
     </list>
     <ignored path="sliceMongo.iws" />
@@ -107,19 +90,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilterSubMeshImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18045112">
-              <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+              <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,6 +104,18 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FilterSubMeshImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.802005">
+              <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -183,8 +166,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/NumbersSquareAll.java" />
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/Impl/nSquareAllImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/FilterSubMesh.java" />
-        <option value="$PROJECT_DIR$/src/main/java/main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/Impl/NumberSquareAllImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java" />
       </list>
     </option>
@@ -237,7 +220,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -246,130 +231,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sliceMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MongoSample" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sliceMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MongoSample" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sliceMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MongoSample" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sliceMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MongoSample" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sliceMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MongoSample" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Interfaces" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sliceMongo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MongoSample" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Interfaces" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impl" />
-              <option name="myItemType" value="com.atlassian.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -894,7 +757,9 @@
       <workItem from="1464196692456" duration="2394000" />
       <workItem from="1464275389057" duration="22000" />
       <workItem from="1465157578458" duration="4809000" />
-      <workItem from="1465187647839" duration="14994000" />
+      <workItem from="1465187647839" duration="15540000" />
+      <workItem from="1465234147993" duration="5829000" />
+      <workItem from="1465284394880" duration="6196000" />
     </task>
     <task id="LOCAL-00001" summary="Получает все данные с базы и парсит JSON c помощью Jakson">
       <created>1459185273344</created>
@@ -974,11 +839,17 @@
       <option name="project" value="LOCAL" />
       <updated>1464123810008</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="nSquareId + часть выборки">
+      <created>1465215520192</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1465215520192</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108278000" />
+    <option name="totallyTimeSpent" value="120849000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1065,7 +936,8 @@
     <MESSAGE value="Делает выборку по ограничениям (исправила ошибку)" />
     <MESSAGE value="Находит все id (без повторений)" />
     <MESSAGE value="срез время" />
-    <option name="LAST_COMMIT_MESSAGE" value="срез время" />
+    <MESSAGE value="nSquareId + часть выборки" />
+    <option name="LAST_COMMIT_MESSAGE" value="nSquareId + часть выборки" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1090,9 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1117,9 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1144,9 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1171,9 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1198,9 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1225,9 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1252,9 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,9 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1306,9 +1154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1333,9 +1178,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1360,9 +1202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1398,7 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.444445">
           <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1406,9 +1244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="28" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1416,7 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="43" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1424,7 +1258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1432,7 +1265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36090225">
           <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1440,7 +1272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5413534">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1448,9 +1279,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5413534">
           <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1458,9 +1286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3458647">
           <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-          <folding>
-            <element signature="e#698#706#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1468,9 +1293,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5413534">
           <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1478,9 +1300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5037594">
           <caret line="49" column="14" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1488,17 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1506,7 +1314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35945946">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1518,10 +1325,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18045112">
-          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.802005">
+          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

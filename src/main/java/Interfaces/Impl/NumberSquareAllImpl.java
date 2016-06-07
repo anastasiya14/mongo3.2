@@ -52,7 +52,7 @@ public class NumberSquareAllImpl implements NumbersSquareAll{
 
             )
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(100)
+                    .limit(200)
                     .iterator();
 
             try {
