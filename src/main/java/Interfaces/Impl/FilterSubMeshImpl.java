@@ -68,7 +68,6 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                     } catch (Exception w) {
                     }
                 }
-                System.out.println("LIST  "+nSquareJSON);
                 result.add(nSquareJSON);
 
             }

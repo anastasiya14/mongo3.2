@@ -14,11 +14,10 @@ import java.util.Map;
  * @author Anastasiya Plotnikova
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class nSquare{
-    Map<String,Long> nSquare=new HashMap<String,Long>();
+public class nSquare {
+    Map<String, Long> nSquare = new HashMap<String, Long>();
 
     public nSquare() {
-
     }
 
     public nSquare(Map<String, Long> nSquare) {
