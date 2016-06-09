@@ -45,14 +45,11 @@ public class NumberSquareAllImpl implements NumbersSquareAll{
 
             // New way to get database
             MongoDatabase db = mongoClient.getDatabase("moto");
-            MongoCollection<Document> collection = db.getCollection("preWeb_test2");
+            MongoCollection<Document> collection = db.getCollection("preWeb_test3");
 
-            MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(
-                    // new Document("nSquare",)
-
-            )
+            MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(200)
+                    .limit(100)
                     .iterator();
 
             try {

@@ -23,7 +23,7 @@ import static com.mongodb.client.model.Filters.and;
 public class FilterSubMeshImpl implements FilterSubMesh {
     private static final Long timeZone = (long) 288;
 
-    public void filterSubMesh(List<Long> numberSquare) {
+    public List<List<String>> filterSubMesh(List<Long> numberSquare) {
         MongoClient mongoClient = null;
 
         List<List<String>> result = new ArrayList<List<String>>();
@@ -35,24 +35,34 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("timeZone");
             filter.add("weekDay");
             filter.add("fileId");
+
+
+
             for (int i = 0; i < numberSquare.size(); i++) {
+
+
 
                 List<String> nSquareJSON = new ArrayList<String>();
 
-                for (int j = 1; j <= timeZone; j++) {
+
+                for (int j = 240; j <= timeZone; j++) {
+
                     System.out.println("timeZone: " + j);
 
                     mongoClient = new MongoClient("10.130.101.9", 27017);
 
                     // New way to get database
                     MongoDatabase db = mongoClient.getDatabase("moto");
-                    MongoCollection<Document> collection = db.getCollection("preWeb_test2");
+                    MongoCollection<Document> collection = db.getCollection("preWeb_test3");
 
                     //Query MongoDB
                     MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find(
-                            and(new Document("nSquare", numberSquare.get(i)), new Document("timeZone", (long) j)))
+                            and(new Document("nSquare", numberSquare.get(i)),
+                                    new Document("timeZone", (long) j)//,
+                                    //  new Document("weekDay", (long) k)
+                            ))
                             .projection(and(Projections.excludeId(), Projections.include(filter)))
-                            .limit(1)
+                            .limit(4)
                             .iterator();
 
                     try {
@@ -62,19 +72,18 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                             System.out.println(json);
                             nSquareJSON.add(json);
 
-
                         }
                         mongoClient.close();
                     } catch (Exception w) {
                     }
+                    result.add(nSquareJSON);
                 }
-                result.add(nSquareJSON);
-
             }
 
         } finally {
             mongoClient.close();
         }
-        System.out.println("Группы ТС "+result);
+        System.out.println("Группы ТС " + result);
+        return result;
     }
 }

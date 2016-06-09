@@ -1,5 +1,6 @@
 package Interfaces;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,9 @@ import java.util.Map;
  */
 public interface SquareSort {
 
-    public Map<String,String> numberFileIdinSquare(List<List<String>> nSquare);
+    public Map<String, Map<Long, Long>> numberFileIdinSquare(List<List<String>> nSquare) throws IOException;
 
-    public void assessment();
+    public void assessment(Map<String, Map<Long, Long>> nSquare) throws IOException;
+
+    public void createJSONforMesh(Map<String, Map<Long, Long>> nSquare) throws IOException;
 }

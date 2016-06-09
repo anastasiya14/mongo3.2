@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface FilterSubMesh {
 
-    public void filterSubMesh(List<Long> numberSquare);
+    public List<List<String>> filterSubMesh(List<Long> numberSquare);
 
 }

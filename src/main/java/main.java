@@ -1,6 +1,7 @@
 import Interfaces.FilterSubMesh;
 import Interfaces.Impl.FilterSubMeshImpl;
 import Interfaces.Impl.NumberSquareAllImpl;
+import Interfaces.Impl.SquareSortImpl;
 import Interfaces.NumbersSquareAll;
 
 import POJOjson.MongoData;
@@ -44,6 +45,8 @@ public class main {
         NumbersSquareAll d = new NumberSquareAllImpl();
        // d.findSquareAllId();
         FilterSubMesh df=new FilterSubMeshImpl();
-       df.filterSubMesh(d.findSquareAllId());
+        SquareSortImpl dd=new SquareSortImpl();
+        dd.assessment(dd.numberFileIdinSquare(df.filterSubMesh(d.findSquareAllId())));
+       // df.filterSubMesh(d.findSquareAllId());
     }
 }
