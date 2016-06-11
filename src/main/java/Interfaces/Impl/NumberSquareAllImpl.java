@@ -25,7 +25,7 @@ import static com.mongodb.client.model.Filters.and;
  *
  * @author Anastasiya Plotnikova
  */
-public class NumberSquareAllImpl implements NumbersSquareAll{
+public class NumberSquareAllImpl implements NumbersSquareAll {
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(NumberSquareAllImpl.class));
 
 
@@ -49,7 +49,7 @@ public class NumberSquareAllImpl implements NumbersSquareAll{
 
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(400)
+                    .limit(5)
                     .iterator();
 
             try {
@@ -63,7 +63,7 @@ public class NumberSquareAllImpl implements NumbersSquareAll{
                     ObjectMapper mapper = new ObjectMapper();
 
                     nSquare squareId = mapper.readValue(json, nSquare.class);
-                    LOGGER.info("nSquare: "+squareId.getnSquare().values().iterator().next().toString());
+                    LOGGER.info("nSquare: " + squareId.getnSquare().values().iterator().next().toString());
                     set.add(squareId.getnSquare().values().iterator().next());
 
                 }

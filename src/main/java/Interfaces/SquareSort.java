@@ -13,7 +13,7 @@ public interface SquareSort {
 
     public Map<String, Map<Long, Long>> numberFileIdinSquare(List<List<String>> nSquare) throws IOException;
 
-    public void assessment(Map<String, Map<Long, Long>> nSquare) throws IOException;
+    public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException;
 
     public void createJSONforMesh( Map<String, Map<Long, Double>> nSquare) throws IOException;
 }

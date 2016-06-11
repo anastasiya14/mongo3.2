@@ -1,7 +1,10 @@
 package Interfaces.Impl;
 
 import Interfaces.SquareSort;
+import POJOjson.Devices;
+import POJOjson.Mesh;
 import POJOjson.SquaresSort;
+import com.mongodb.BasicDBObject;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
@@ -50,7 +53,7 @@ public class SquareSortImpl implements SquareSort {
         return squareNumberFileId;
     }
 
-    public void assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
+    public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
       /* оценка записей, удаление лишних*/
         //System.out.println("size Map " + nSquare.size());
 
@@ -75,35 +78,74 @@ public class SquareSortImpl implements SquareSort {
                 alpha = 1;
             }
             if (alpha > 0.8) {
-                fileIdDevProb.put(squareId.getFileId().values().iterator().next(),alpha);
-                String timeZone=" \"timeZone\" : "+squareId.getTimeZone();
-                String weekDay=" \"weekDay\" : "+squareId.getTimeZone();
-                String numSquare=" \"nSquare\" : { \"$numberLong\" :"+squareId.getnSquare().values().iterator().next()+" } ";
-                String str="{"+timeZone+","+weekDay+","+numSquare+"}";
+                fileIdDevProb.put(squareId.getFileId().values().iterator().next(), alpha);
+                String timeZone = " \"timeZone\" : " + squareId.getTimeZone();
+                String weekDay = " \"weekDay\" : " + squareId.getWeekDay();
+                String numSquare = " \"nSquare\" : { \"$numberLong\" : " + squareId.getnSquare().values().iterator().next() + " } ";
+                String str = "{" + timeZone + "," + weekDay + "," + numSquare + "}";
                 result.put(str, fileIdDevProb);
             }
         }
         System.out.println("Результат  " + result);
+        return result;
     }
 
     // Map<JSON,Map<fileId, devProb>>
-    public void createJSONforMesh( Map<String, Map<Long, Double>> nSquare) throws IOException {
-        /**TODO создать JSON для сетки:
-         *  devices: fileId, devProb;
-         *  despersion - десперсия
-         *  devCount-кол-во устройств в квадрате
+    public void createJSONforMesh(Map<String, Map<Long, Double>> nSquare) throws IOException {
+        /**TODO создать мапы для mongo
          *  */
 
-        /*находим все поля где weekDay, timeZone, nSquare совпадают.
-        * Все отличающиеся fileId в map<Long,double>
-        *     поместить все в json*/
         Map<String, String> meshJSON = new HashMap<String, String>();
+        List<String> resultList = new ArrayList<String>();
+        BasicDBObject meshSquare = new BasicDBObject();
+        for (Map<Long, Double> entry : nSquare.values()) {
 
-        for (String entry : nSquare.keySet()) {
             ObjectMapper mapper = new ObjectMapper();
-            SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
-            //if(squareId.getFileId().values().iterator().next())
+            SquaresSort square = mapper.readValue(nSquare.keySet().iterator().next(), SquaresSort.class);
+            int devCount = entry.size();
+            double despersion, x1 = 0, x2 = 0;
+
+
+
+            List<BasicDBObject> devices = new ArrayList<BasicDBObject>();
+
+
+
+            /*средний квадрат отклонений равен
+            средней из квадратов значений признака минус квадрат средней.*/
+            for (Double affiliation : entry.values()) {
+
+                devices.add(new BasicDBObject()
+                        .append("fileId", entry.keySet().iterator().next())
+                        .append("devProb", entry.values().iterator().next()));
+
+                x1 = x1 + affiliation * affiliation;
+                x2 = x2 + affiliation;
+
+            }
+
+
+            x1 = x1 / entry.size();
+            x2 = x2 / entry.size();
+            despersion = x1 - x2 * x2;
+
+
+            meshSquare.put("timeZone", square.getTimeZone());
+            meshSquare.put("weekDay", square.getWeekDay());
+            meshSquare.put("nSquare", square.getnSquare().values().iterator().next());
+            meshSquare.put("devCount", devCount);
+            meshSquare.put("despersion", despersion);
+            meshSquare.put("devices", devices);
+
+            //  result = nSquare.keySet().iterator().next()
+            //          .substring(0, nSquare.keySet().iterator().next().length() - 1) + ", \"devProb\" : " + devCount +
+            //         ", \"despersion\" : " + despersion
+            //         + ", " + devices + " }";
+
+
+            // resultList.add(result);
         }
+        System.out.println(meshSquare);
     }
 
 

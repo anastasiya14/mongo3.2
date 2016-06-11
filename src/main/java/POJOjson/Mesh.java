@@ -11,7 +11,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Mesh {
     private Long nSquare;
-    private Long timeZone;
+    private int timeZone;
     private int weekDay;
     private int devCount;
     private double despersion;
@@ -20,13 +20,13 @@ public class Mesh {
     public Mesh() {
     }
 
-    public Mesh(Long nSquare, Long timeZone, int weekDay, int devCount, double despersion, Devices devices) {
+    public Mesh(Long nSquare, Devices devices, double despersion, int weekDay, int timeZone, int devCount) {
         this.nSquare = nSquare;
-        this.timeZone = timeZone;
-        this.weekDay = weekDay;
-        this.devCount = devCount;
-        this.despersion = despersion;
         this.devices = devices;
+        this.despersion = despersion;
+        this.weekDay = weekDay;
+        this.timeZone = timeZone;
+        this.devCount = devCount;
     }
 
     public Long getnSquare() {
@@ -37,28 +37,12 @@ public class Mesh {
         this.nSquare = nSquare;
     }
 
-    public Long getTimeZone() {
-        return timeZone;
+    public Devices getDevices() {
+        return devices;
     }
 
-    public void setTimeZone(Long timeZone) {
-        this.timeZone = timeZone;
-    }
-
-    public int getWeekDay() {
-        return weekDay;
-    }
-
-    public void setWeekDay(int weekDay) {
-        this.weekDay = weekDay;
-    }
-
-    public int getDevCount() {
-        return devCount;
-    }
-
-    public void setDevCount(int devCount) {
-        this.devCount = devCount;
+    public void setDevices(Devices devices) {
+        this.devices = devices;
     }
 
     public double getDespersion() {
@@ -69,12 +53,28 @@ public class Mesh {
         this.despersion = despersion;
     }
 
-    public Devices getDevices() {
-        return devices;
+    public int getDevCount() {
+        return devCount;
     }
 
-    public void setDevices(Devices devices) {
-        this.devices = devices;
+    public void setDevCount(int devCount) {
+        this.devCount = devCount;
+    }
+
+    public int getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(int weekDay) {
+        this.weekDay = weekDay;
+    }
+
+    public int getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(int timeZone) {
+        this.timeZone = timeZone;
     }
 
     @Override
