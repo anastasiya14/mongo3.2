@@ -45,7 +45,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                 List<String> nSquareJSON = new ArrayList<String>();
 
 
-                for (int j = 240; j <= timeZone; j++) {
+                for (int j = 1; j <= timeZone; j++) {
 
                     System.out.println("timeZone: " + j);
 
@@ -62,7 +62,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                                     //  new Document("weekDay", (long) k)
                             ))
                             .projection(and(Projections.excludeId(), Projections.include(filter)))
-                            .limit(4)
+                           // .limit(4)
                             .iterator();
 
                     try {

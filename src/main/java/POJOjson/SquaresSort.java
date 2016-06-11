@@ -16,32 +16,18 @@ public class SquaresSort {
 
     private int timeZone;
     private int weekDay;
+    private double devProb;
     Map<String, Long> nSquare = new HashMap<String, Long>();
     Map<String, Long> fileId = new HashMap<String, Long>();
 
     public SquaresSort() {
     }
 
-    public SquaresSort(int timeZone, Map<String, Long> fileId, Map<String, Long> nSquare, int weekDay) {
+    public SquaresSort(int timeZone, int weekDay, double devProb, Map<String, Long> nSquare, Map<String, Long> fileId) {
         this.timeZone = timeZone;
-        this.fileId = fileId;
-        this.nSquare = nSquare;
         this.weekDay = weekDay;
-    }
-
-    public Map<String, Long> getnSquare() {
-        return nSquare;
-    }
-
-    public void setnSquare(Map<String, Long> nSquare) {
+        this.devProb = devProb;
         this.nSquare = nSquare;
-    }
-
-    public Map<String, Long> getFileId() {
-        return fileId;
-    }
-
-    public void setFileId(Map<String, Long> fileId) {
         this.fileId = fileId;
     }
 
@@ -53,6 +39,30 @@ public class SquaresSort {
         this.timeZone = timeZone;
     }
 
+    public Map<String, Long> getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(Map<String, Long> fileId) {
+        this.fileId = fileId;
+    }
+
+    public Map<String, Long> getnSquare() {
+        return nSquare;
+    }
+
+    public void setnSquare(Map<String, Long> nSquare) {
+        this.nSquare = nSquare;
+    }
+
+    public double getDevProb() {
+        return devProb;
+    }
+
+    public void setDevProb(double devProb) {
+        this.devProb = devProb;
+    }
+
     public int getWeekDay() {
         return weekDay;
     }
@@ -61,14 +71,13 @@ public class SquaresSort {
         this.weekDay = weekDay;
     }
 
-
-
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("nSquare", nSquare)
                 .append("timeZone", timeZone)
                 .append("weekDay", weekDay)
+                .append("devProb", devProb)
+                .append("nSquare", nSquare)
                 .append("fileId", fileId)
                 .toString();
     }

@@ -2,7 +2,6 @@ package Interfaces.Impl;
 
 import Interfaces.SquareSort;
 import POJOjson.SquaresSort;
-import POJOjson.nSquare;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
@@ -53,39 +52,60 @@ public class SquareSortImpl implements SquareSort {
 
     public void assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
       /* оценка записей, удаление лишних*/
-        System.out.println("size Map " + nSquare.size());
-        Map<String, Map<Long, Long>> result = new HashMap<String, Map<Long, Long>>();
-        for (Map<Long, Long> entry : nSquare.values()) {
+        //System.out.println("size Map " + nSquare.size());
 
-            String devProb = " , \"devProb\" : ";
+        Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
+        Map<Long, Double> fileIdDevProb = new HashMap<Long, Double>();
+
+        for (String entry : nSquare.keySet()) {
+
+            String devProb = " }, \"devProb\" : ";
 
             ObjectMapper mapper = new ObjectMapper();
-            //System.out.println(entry);
-            String json = nSquare.keySet().iterator().next();
-            SquaresSort squareId = mapper.readValue(json, SquaresSort.class);
-            squareId.getFileId().values().iterator().next();
-            Long x = entry.values().iterator().next();
+            SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
 
+            Long x = nSquare.get(entry).get(squareId.getFileId().values().iterator().next());
+            //System.out.println(x);
+            // System.out.println(entry);
             double alpha = 0;
-            if (1 < x & x < 3000) {
+            if (a < x & x <= b) {
                 alpha = (x - a) / (b - a);
-                devProb = devProb + alpha + " } }";
+                devProb = devProb + alpha;
             } else {
                 alpha = 1;
             }
             if (alpha > 0.8) {
-                result.put(json.replace(" } }", devProb), entry);
+                fileIdDevProb.put(squareId.getFileId().values().iterator().next(),alpha);
+                String timeZone=" \"timeZone\" : "+squareId.getTimeZone();
+                String weekDay=" \"weekDay\" : "+squareId.getTimeZone();
+                String numSquare=" \"nSquare\" : { \"$numberLong\" :"+squareId.getnSquare().values().iterator().next()+" } ";
+                String str="{"+timeZone+","+weekDay+","+numSquare+"}";
+                result.put(str, fileIdDevProb);
             }
-
         }
-        System.out.println("ddd  " + result);
+        System.out.println("Результат  " + result);
     }
 
-    public void createJSONforMesh(Map<String, Map<Long, Long>> nSquare) throws IOException {
+    // Map<JSON,Map<fileId, devProb>>
+    public void createJSONforMesh( Map<String, Map<Long, Double>> nSquare) throws IOException {
         /**TODO создать JSON для сетки:
          *  devices: fileId, devProb;
-         *  despersion
-         *  devCount
+         *  despersion - десперсия
+         *  devCount-кол-во устройств в квадрате
          *  */
+
+        /*находим все поля где weekDay, timeZone, nSquare совпадают.
+        * Все отличающиеся fileId в map<Long,double>
+        *     поместить все в json*/
+        Map<String, String> meshJSON = new HashMap<String, String>();
+
+        for (String entry : nSquare.keySet()) {
+            ObjectMapper mapper = new ObjectMapper();
+            SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
+            //if(squareId.getFileId().values().iterator().next())
+        }
     }
+
+
+    /**TODO создать коллекцию сетки*/
 }

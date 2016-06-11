@@ -15,5 +15,5 @@ public interface SquareSort {
 
     public void assessment(Map<String, Map<Long, Long>> nSquare) throws IOException;
 
-    public void createJSONforMesh(Map<String, Map<Long, Long>> nSquare) throws IOException;
+    public void createJSONforMesh( Map<String, Map<Long, Double>> nSquare) throws IOException;
 }

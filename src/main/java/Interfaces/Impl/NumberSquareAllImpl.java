@@ -49,7 +49,7 @@ public class NumberSquareAllImpl implements NumbersSquareAll{
 
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(100)
+                    .limit(400)
                     .iterator();
 
             try {
