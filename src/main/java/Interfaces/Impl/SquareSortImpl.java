@@ -1,10 +1,11 @@
 package Interfaces.Impl;
 
 import Interfaces.SquareSort;
-import POJOjson.Devices;
-import POJOjson.Mesh;
 import POJOjson.SquaresSort;
-import com.mongodb.BasicDBObject;
+import com.mongodb.*;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.util.*;
 public class SquareSortImpl implements SquareSort {
 
     private static final int a = 1;
-    private static final int b = 3;
+    private static final int b = 300;
 
     public Map<String, Map<Long, Long>> numberFileIdinSquare(List<List<String>> nSquare) throws IOException {
 
@@ -31,7 +32,7 @@ public class SquareSortImpl implements SquareSort {
             for (String entryString : entry) {
 
                 ObjectMapper mapper = new ObjectMapper();
-                System.out.println(entry);
+               // System.out.println(entry);
 
                 SquaresSort squareId = mapper.readValue(entryString, SquaresSort.class);
                 id = squareId.getFileId().values().iterator().next();
@@ -54,8 +55,8 @@ public class SquareSortImpl implements SquareSort {
     }
 
     public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
-      /* оценка записей, удаление лишних*/
-        //System.out.println("size Map " + nSquare.size());
+
+        /* оценка записей, удаление лишних*/
 
         Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
         Map<Long, Double> fileIdDevProb = new HashMap<Long, Double>();
@@ -86,17 +87,16 @@ public class SquareSortImpl implements SquareSort {
                 result.put(str, fileIdDevProb);
             }
         }
-        System.out.println("Результат  " + result);
+        //System.out.println("Результат  " + result);
         return result;
     }
 
     // Map<JSON,Map<fileId, devProb>>
     public void createJSONforMesh(Map<String, Map<Long, Double>> nSquare) throws IOException {
-        /**TODO создать мапы для mongo
-         *  */
 
+        List<BasicDBObject> result = new ArrayList<BasicDBObject>();
         Map<String, String> meshJSON = new HashMap<String, String>();
-        List<String> resultList = new ArrayList<String>();
+        //List<String> resultList = new ArrayList<String>();
         BasicDBObject meshSquare = new BasicDBObject();
         for (Map<Long, Double> entry : nSquare.values()) {
 
@@ -105,11 +105,7 @@ public class SquareSortImpl implements SquareSort {
             int devCount = entry.size();
             double despersion, x1 = 0, x2 = 0;
 
-
-
             List<BasicDBObject> devices = new ArrayList<BasicDBObject>();
-
-
 
             /*средний квадрат отклонений равен
             средней из квадратов значений признака минус квадрат средней.*/
@@ -124,11 +120,9 @@ public class SquareSortImpl implements SquareSort {
 
             }
 
-
             x1 = x1 / entry.size();
             x2 = x2 / entry.size();
             despersion = x1 - x2 * x2;
-
 
             meshSquare.put("timeZone", square.getTimeZone());
             meshSquare.put("weekDay", square.getWeekDay());
@@ -137,15 +131,22 @@ public class SquareSortImpl implements SquareSort {
             meshSquare.put("despersion", despersion);
             meshSquare.put("devices", devices);
 
-            //  result = nSquare.keySet().iterator().next()
-            //          .substring(0, nSquare.keySet().iterator().next().length() - 1) + ", \"devProb\" : " + devCount +
-            //         ", \"despersion\" : " + despersion
-            //         + ", " + devices + " }";
+            result.add(meshSquare);
 
 
-            // resultList.add(result);
         }
-        System.out.println(meshSquare);
+
+
+        Mongo mongo = new Mongo("10.130.101.9", 27017);
+        DB db = mongo.getDB("moto");
+
+        DBCollection collection = db.getCollection("mesh_test");
+        collection.drop();
+        collection.insert(result);
+
+
+        System.out.println(result);
+        System.out.println(result.size());
     }
 
 

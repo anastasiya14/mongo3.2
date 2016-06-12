@@ -49,6 +49,6 @@ public class main {
        // dd.numberFileIdinSquare(df.filterSubMesh(d.findSquareAllId()));
 
        // df.filterSubMesh(d.findSquareAllId());
-        dd.createJSONforMesh( dd.assessment(dd.numberFileIdinSquare(df.filterSubMesh(d.findSquareAllId()))));
+        dd.createJSONforMesh( dd.assessment(dd.numberFileIdinSquare(df.filterSubMesh())));
     }
 }
