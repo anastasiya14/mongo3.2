@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e854e352-1a0d-4ef6-a9de-b3228d581c94" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/FilterSubMeshImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/routing/Impl/JSONtoDataImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/routing/JSONtoData.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/FilterMesh.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/FileIdAll.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/FileIdAll.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/FilterSubMesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/FilterSubMesh.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FileIdAllImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/FileIdAllImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/NumberSquareAllImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/NumberSquareAllImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/Impl/SquareSortImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/SquareSortImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/NumbersSquareAll.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/NumbersSquareAll.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Interfaces/SquareSort.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/SquareSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/POJOjson/Devices.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/POJOjson/Devices.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/POJOjson/Mesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/POJOjson/Mesh.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/POJOjson/MongoData.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/POJOjson/MongoData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/POJOjson/SquaresSort.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/POJOjson/SquaresSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/POJOjson/nSquare.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/POJOjson/nSquare.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/WorkWithMongo.class" afterPath="$PROJECT_DIR$/target/classes/WorkWithMongo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main.class" afterPath="$PROJECT_DIR$/target/classes/main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/WorkWithMongo.java" afterPath="$PROJECT_DIR$/src/main/java/WorkWithMongo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main.java" afterPath="$PROJECT_DIR$/src/main/java/main.java" />
     </list>
     <ignored path="sliceMongo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1109,7 +1090,7 @@
       <workItem from="1465791476512" duration="1225000" />
       <workItem from="1465913400316" duration="13013000" />
       <workItem from="1465928576814" duration="7783000" />
-      <workItem from="1465978953517" duration="5071000" />
+      <workItem from="1465978953517" duration="5142000" />
     </task>
     <task id="LOCAL-00001" summary="Получает все данные с базы и парсит JSON c помощью Jakson">
       <created>1459185273344</created>
@@ -1231,11 +1212,17 @@
       <option name="project" value="LOCAL" />
       <updated>1465760929392</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="nSquareId +заполнение списка + создание сетки + выборка данных и помещение их в список">
+      <created>1465986366780</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1465986366780</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236827000" />
+    <option name="totallyTimeSpent" value="236898000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1325,7 +1312,8 @@
     <MESSAGE value="nSquareId + часть выборки" />
     <MESSAGE value="nSquareId +заполнение списка (нет сортировки списка)" />
     <MESSAGE value="nSquareId +заполнение списка (оценка записей, удаление лишних)" />
-    <option name="LAST_COMMIT_MESSAGE" value="nSquareId +заполнение списка (оценка записей, удаление лишних)" />
+    <MESSAGE value="nSquareId +заполнение списка + создание сетки + выборка данных и помещение их в список" />
+    <option name="LAST_COMMIT_MESSAGE" value="nSquareId +заполнение списка + создание сетки + выборка данных и помещение их в список" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1581,6 +1569,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1588,6 +1577,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51428574">
           <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1595,6 +1585,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1602,6 +1593,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
