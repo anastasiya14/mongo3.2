@@ -24,7 +24,7 @@ import static com.mongodb.client.model.Filters.and;
  */
 public class JSONtoDataImpl implements JSONtoData {
 
-    public void jsonToData() throws IOException {
+    public List<Mesh> jsonToData() throws IOException {
         MongoClient mongoClient = null;
         List<Mesh> nSquareJSON = new ArrayList<Mesh>();
         try {
@@ -60,6 +60,6 @@ public class JSONtoDataImpl implements JSONtoData {
         } finally {
             mongoClient.close();
         }
-       // System.out.println("mesh " + nSquareJSON);
+       return nSquareJSON;
     }
 }

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e854e352-1a0d-4ef6-a9de-b3228d581c94" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/routing/Impl/JSONtoDataImpl.java" afterPath="$PROJECT_DIR$/src/main/java/routing/Impl/JSONtoDataImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/routing/JSONtoData.java" afterPath="$PROJECT_DIR$/src/main/java/routing/JSONtoData.java" />
     </list>
     <ignored path="sliceMongo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,8 +113,8 @@
       <file leaf-file-name="JSONtoDataImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/routing/Impl/JSONtoDataImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5974026">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7194805">
+              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -193,8 +195,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/routing/JSONtoData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-              <folding />
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -259,7 +263,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/Impl/SquareSortImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Interfaces/Impl/FilterSubMeshImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/FileIdAll.java" />
-        <option value="$PROJECT_DIR$/src/main/java/routing/JSONtoData.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh/POJOjson/SquaresSort.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/NumberSquareAllImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/FileIdAllImpl.java" />
@@ -269,6 +272,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/SquareSortImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/FilterSubMeshImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/routing/JSONtoData.java" />
         <option value="$PROJECT_DIR$/src/main/java/routing/Impl/JSONtoDataImpl.java" />
       </list>
     </option>
@@ -1088,7 +1092,7 @@
       <workItem from="1465791476512" duration="1225000" />
       <workItem from="1465913400316" duration="13013000" />
       <workItem from="1465928576814" duration="7783000" />
-      <workItem from="1465978953517" duration="5266000" />
+      <workItem from="1465978953517" duration="5535000" />
     </task>
     <task id="LOCAL-00001" summary="Получает все данные с базы и парсит JSON c помощью Jakson">
       <created>1459185273344</created>
@@ -1222,11 +1226,17 @@
       <option name="project" value="LOCAL" />
       <updated>1465986421475</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="nSquareId +заполнение списка + создание сетки + выборка данных и помещение их в список">
+      <created>1465986514540</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1465986514540</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237022000" />
+    <option name="totallyTimeSpent" value="237291000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1711,15 +1721,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/routing/JSONtoData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding />
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/routing/Impl/JSONtoDataImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5974026">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7194805">
+          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
