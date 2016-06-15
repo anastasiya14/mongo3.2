@@ -1,4 +1,4 @@
-package Interfaces;
+package Mesh.Interfaces;
 
 import java.util.List;
 

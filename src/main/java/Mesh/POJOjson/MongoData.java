@@ -1,4 +1,4 @@
-package POJOjson;
+package Mesh.POJOjson;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;

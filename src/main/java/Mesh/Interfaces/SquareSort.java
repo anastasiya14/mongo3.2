@@ -1,4 +1,4 @@
-package Interfaces;
+package Mesh.Interfaces;
 
 import java.io.IOException;
 import java.util.List;

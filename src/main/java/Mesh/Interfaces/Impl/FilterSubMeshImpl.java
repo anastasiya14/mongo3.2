@@ -1,45 +1,43 @@
-package Interfaces.Impl;
+package Mesh.Interfaces.Impl;
 
 
-import Interfaces.FileIdAll;
-import Interfaces.NumbersSquareAll;
-import POJOjson.nSquare;
+import Mesh.Interfaces.FilterSubMesh;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Projections;
 import org.bson.Document;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
 
 import static com.mongodb.client.model.Filters.and;
 
 /**
- * Created: 05.06.16 23:18
+ * Created: 06.06.16 10:11
  *
  * @author Anastasiya Plotnikova
  */
-public class NumberSquareAllImpl implements NumbersSquareAll {
-    private static final Logger LOGGER = Logger.getLogger(String.valueOf(NumberSquareAllImpl.class));
+public class FilterSubMeshImpl implements FilterSubMesh {
+    private static final Long timeZone = (long) 288;
 
-
-    public List<Long> findSquareAllId() {
-        List<Long> result = new ArrayList<Long>();
-        Set<Long> set = new HashSet<Long>();
+    public List<List<String>> filterSubMesh() {
         MongoClient mongoClient = null;
-        try {
 
-            //int limit = 20000;
+        List<List<String>> result = new ArrayList<List<String>>();
+
+        try {
 
             List<String> filter = new ArrayList<String>();
             filter.add("nSquare");
+            filter.add("timeZone");
+            filter.add("weekDay");
+            filter.add("fileId");
+            filter.add("squareI");
+            filter.add("squareJ");
 
+            List<String> nSquareJSON = new ArrayList<String>();
 
             mongoClient = new MongoClient("10.130.101.9", 27017);
 
@@ -47,37 +45,28 @@ public class NumberSquareAllImpl implements NumbersSquareAll {
             MongoDatabase db = mongoClient.getDatabase("moto");
             MongoCollection<Document> collection = db.getCollection("preWeb_test3");
 
+            //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(40)
+                   // .limit(30)
                     .iterator();
 
             try {
                 while (cursor.hasNext()) {
 
-
                     String json = cursor.next().toJson();
-                    LOGGER.info(json);
-
-                    // this is the key object to convert JSON to Java
-                    ObjectMapper mapper = new ObjectMapper();
-
-                    nSquare squareId = mapper.readValue(json, nSquare.class);
-                    LOGGER.info("nSquare: " + squareId.getnSquare().values().iterator().next().toString());
-                    set.add(squareId.getnSquare().values().iterator().next());
+                    nSquareJSON.add(json);
 
                 }
                 mongoClient.close();
             } catch (Exception w) {
             }
+            result.add(nSquareJSON);
+
         } finally {
             mongoClient.close();
         }
-
-        result.clear();
-        result.addAll(set);
-        System.out.println(result.size());
-        System.out.println(result);
+       // System.out.println("Группы ТС " + result);
         return result;
     }
 }
