@@ -16,7 +16,7 @@ import java.util.*;
 public class SquareSortImpl implements SquareSort {
 
     private static final int a = 1;
-    private static final int b = 11;
+    private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
     public Map<String, Map<Long, Long>> numberFileIdinSquare(List<List<String>> nSquare) throws IOException {
@@ -48,7 +48,7 @@ public class SquareSortImpl implements SquareSort {
             }
             //System.out.println("ddd  " + numberFileId);
         }
-        // System.out.println("Map<JSON c нужными параметрами,Map<fileID,кол-во повторений>>  " + squareNumberFileId);
+        System.out.println("Map<JSON c нужными параметрами,Map<fileID,кол-во повторений>>  " + squareNumberFileId);
         return squareNumberFileId;
     }
 
@@ -68,7 +68,7 @@ public class SquareSortImpl implements SquareSort {
 
             Long x = nSquare.get(entry).get(squareId.getFileId().values().iterator().next());
 
-            //System.out.println("x = " + x);
+            System.out.println("x = " + x);
             // System.out.println("JSON " + entry);
 
 
@@ -101,7 +101,7 @@ public class SquareSortImpl implements SquareSort {
     // Map<JSON,Map<fileId, devProb>>
     public void createJSONforMesh(Map<String, Map<Long, Double>> nSquare) throws IOException {
 
-        System.out.println("test " + nSquare);
+       // System.out.println("test " + nSquare);
         List<BasicDBObject> result = new ArrayList<BasicDBObject>();
         Map<String, String> meshJSON = new HashMap<String, String>();
         int i = 0;
@@ -122,16 +122,19 @@ public class SquareSortImpl implements SquareSort {
 
             /*средний квадрат отклонений равен
             средней из квадратов значений признака минус квадрат средней.*/
+            int j=0;
+            List<Long> keyListFileId = new ArrayList<Long>();
+            keyListFileId.addAll(entry.keySet());
             for (Double affiliation : entry.values()) {
 
                // System.out.println(square);
                 devices.add(new BasicDBObject()
-                        .append("fileId", entry.keySet().iterator().next())
-                        .append("devProb", entry.values().iterator().next()));
+                        .append("fileId", keyListFileId.get(j))
+                        .append("devProb", affiliation));
 
                 x1 = x1 + affiliation * affiliation;
                 x2 = x2 + affiliation;
-
+                j++;
             }
 
             x1 = x1 / entry.size();
@@ -156,6 +159,7 @@ public class SquareSortImpl implements SquareSort {
            // meshSquare.clear();
             i++;
 
+
         }
 
         Set<BasicDBObject> set = new HashSet<BasicDBObject>(result);
@@ -170,6 +174,7 @@ public class SquareSortImpl implements SquareSort {
 
 
         System.out.println(result.size());
+        System.out.println(result);
     }
 
 

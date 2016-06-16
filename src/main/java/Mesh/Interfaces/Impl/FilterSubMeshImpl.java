@@ -48,7 +48,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                   // .limit(30)
+                   // .limit(100)
                     .iterator();
 
             try {
