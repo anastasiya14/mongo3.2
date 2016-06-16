@@ -22,9 +22,9 @@ import static com.mongodb.client.model.Filters.and;
 public class FilterSubMeshImpl implements FilterSubMesh {
     private static final Long timeZone = (long) 288;
 
-    public List<List<String>> filterSubMesh() {
+    public List<String> filterSubMesh() {
         MongoClient mongoClient = null;
-
+        List<String> nSquareJSON = new ArrayList<String>();
         List<List<String>> result = new ArrayList<List<String>>();
 
         try {
@@ -37,7 +37,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("squareI");
             filter.add("squareJ");
 
-            List<String> nSquareJSON = new ArrayList<String>();
+
 
             mongoClient = new MongoClient("10.130.101.9", 27017);
 
@@ -48,7 +48,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                   // .limit(100)
+                  //  .limit(100)
                     .iterator();
 
             try {
@@ -61,12 +61,12 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                 mongoClient.close();
             } catch (Exception w) {
             }
-            result.add(nSquareJSON);
+            //result.add(nSquareJSON);
 
         } finally {
             mongoClient.close();
         }
        // System.out.println("Группы ТС " + result);
-        return result;
+        return nSquareJSON;
     }
 }

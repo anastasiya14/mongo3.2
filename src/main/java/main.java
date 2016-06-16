@@ -22,9 +22,12 @@ public class main {
         FilterSubMesh filterSubMesh=new FilterSubMeshImpl();
         SquareSortImpl squareSort=new SquareSortImpl();
 
-        //squareSort.createJSONforMesh( squareSort.assessment(squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh())));
+        squareSort.createJSONforMesh(squareSort.assessment(squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh())));
 
-        JSONtoDataImpl jsoNtoData = new JSONtoDataImpl();
-        jsoNtoData.jsonToData();
+
+
+        // squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh());
+       // JSONtoDataImpl jsoNtoData = new JSONtoDataImpl();
+       // jsoNtoData.jsonToData();
     }
 }

@@ -4,6 +4,7 @@ import Mesh.Interfaces.SquareSort;
 import Mesh.POJOjson.SquaresSort;
 import com.mongodb.*;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.util.*;
@@ -16,92 +17,149 @@ import java.util.*;
 public class SquareSortImpl implements SquareSort {
 
     private static final int a = 1;
-    private static final int b = 18000; //9000 записей за месяц (30 сек)
+
+    private static final int b = 300;
+    //   private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
-    public Map<String, Map<Long, Long>> numberFileIdinSquare(List<List<String>> nSquare) throws IOException {
+    public Map<String, Map<Long, Long>> numberFileIdinSquare(List<String> nSquare) throws IOException {
 
         Map<String, Map<Long, Long>> squareNumberFileId = new HashMap<String, Map<Long, Long>>();
 
-        for (List<String> entry : nSquare) {
+        Map<Long, Long> numberFileId = new HashMap<Long, Long>();
 
-            Map<Long, Long> numberFileId = new HashMap<Long, Long>();
-            Long id = null;
 
-            for (String entryString : entry) {
+        Map<String, Long> numberRepetition = new HashMap<String, Long>();
+        Long id = null;
 
-                ObjectMapper mapper = new ObjectMapper();
+        for (String entryString : nSquare) {
 
-                SquaresSort squareId = mapper.readValue(entryString, SquaresSort.class);
-                id = squareId.getFileId().values().iterator().next();
+           // System.out.println("----------- " + entryString);
 
-                if (!numberFileId.containsKey(id)) {
+            ObjectMapper mapper = new ObjectMapper();
 
-                    numberFileId.put(id, (long) 1);
+            SquaresSort squareId = mapper.readValue(entryString, SquaresSort.class);
+            id = squareId.getFileId().values().iterator().next();
 
-                } else {
+            if (!numberRepetition.containsKey(entryString)) { //проверяет есть ли в мапе json
 
-                    numberFileId.put(id,
-                            numberFileId.get(id) + 1);
-                }
-                squareNumberFileId.put(entryString, numberFileId);
+                numberRepetition.put(entryString, (long) 1);
+
+            } else {
+
+                numberRepetition.put(entryString, numberRepetition.get(entryString) + 1);
             }
-            //System.out.println("ddd  " + numberFileId);
+
+
         }
-        System.out.println("Map<JSON c нужными параметрами,Map<fileID,кол-во повторений>>  " + squareNumberFileId);
+        int i = 0;
+        List<Long> valueFileIdAndNumber = new ArrayList<Long>();
+        valueFileIdAndNumber.addAll(numberRepetition.values());
+
+
+        for (String entry : numberRepetition.keySet()) {
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
+            id = squareId.getFileId().values().iterator().next();
+
+            JSONObject obj = new JSONObject();
+            obj.put("nSquare", squareId.getnSquare());
+            obj.put("squareI", squareId.getSquareI());
+            obj.put("squareJ", squareId.getSquareJ());
+            obj.put("timeZone", squareId.getTimeZone());
+            obj.put("weekDay", squareId.getWeekDay());
+          //  System.out.println(" obj = " + obj.toJSONString());
+
+            //System.out.println("fileId = " +squareId.getFileId().values().iterator().next());
+            if (squareNumberFileId.containsKey(obj.toJSONString())) {
+                if (!squareNumberFileId.containsKey(squareId.getFileId().values().iterator().next())) {
+
+                    Map<Long, Long> fileIdNum = new HashMap<Long, Long>();
+                    fileIdNum.putAll(squareNumberFileId.values().iterator().next());
+
+                    fileIdNum.put(squareId.getFileId().values().iterator().next(), valueFileIdAndNumber.get(i));
+                  //  System.out.println("n :" + fileIdNum);
+                    squareNumberFileId.put(obj.toJSONString(), fileIdNum);
+                }
+            } else {
+                Map<Long, Long> fileIdNum = new HashMap<Long, Long>();
+                fileIdNum.put(id, valueFileIdAndNumber.get(i));
+                squareNumberFileId.put(obj.toJSONString(), fileIdNum);
+            }
+            i++;
+        }
+
+       // System.out.println("numberRepetition " + numberRepetition);
+       // System.out.println("numberList " + nSquare.size());
+       // System.out.println("Map<JSON c нужными параметрами,Map<fileID,кол-во повторений>>  " + squareNumberFileId);
         return squareNumberFileId;
     }
+
 
     public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
 
         /* оценка записей, удаление лишних*/
 
-        Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
-        Map<Long, Double> fileIdDevProb = new HashMap<Long, Double>();
+      //  System.out.println("nSquare  " + nSquare);
 
-        for (String entry : nSquare.keySet()) {
-            double alpha = 0;
-            String devProb = " }, \"devProb\" : ";
+        Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
+
+        List<String> valueString = new ArrayList<String>();
+        valueString.addAll(nSquare.keySet());
+        List<Map<Long, Long>> valueFileId = new ArrayList<Map<Long, Long>>();
+        int i = 0;
+        for (Map<Long, Long> entry : nSquare.values()) {
 
             ObjectMapper mapper = new ObjectMapper();
-            SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
-
-            Long x = nSquare.get(entry).get(squareId.getFileId().values().iterator().next());
-
-            System.out.println("x = " + x);
-            // System.out.println("JSON " + entry);
+            SquaresSort squareId = mapper.readValue(valueString.get(i), SquaresSort.class);
 
 
-            if (a < x && x <= b) {
-                alpha = ((double) (x - a) / (double) (b - a));
-                devProb = devProb + alpha;
-                //System.out.println("alphaff = " + alpha);
-            } else {
-                alpha = 1;
-                //System.out.println("alpha = " + alpha);
+            valueFileId.addAll(nSquare.values());
+
+            Map<Long, Double> fileIdDevProb = new HashMap<Long, Double>();//fileId, devProb
+            for (Long longFileId : entry.keySet()) {
+                double alpha = 0;
+                Long x = entry.get(longFileId);
+                //System.out.println("fileId = " + entry.keySet());
+                System.out.println("x = " + x);
+                if (a <= x && x <= b) {
+                    alpha = ((double) (x - a) / (double) (b - a));
+                  //  System.out.println("alpha = " + alpha);
+
+                } else {
+                    alpha = 1;
+                 //   System.out.println("alpha = " + alpha);
+                }
+
+                if (alpha >= degree) {
+                    //System.out.println("alpha = " + alpha);
+                    fileIdDevProb.put(longFileId, alpha);
+                    JSONObject obj = new JSONObject();
+                    obj.put("nSquare", squareId.getnSquare());
+                    obj.put("squareI", squareId.getSquareI());
+                    obj.put("squareJ", squareId.getSquareJ());
+                    obj.put("timeZone", squareId.getTimeZone());
+                    obj.put("weekDay", squareId.getWeekDay());
+
+                    result.put(obj.toJSONString(), fileIdDevProb);
+                }
+                {
+                    //System.out.println("  < 0.8   ");
+                }
             }
-
-            if (alpha >= degree) {
-                fileIdDevProb.put(squareId.getFileId().values().iterator().next(), alpha);
-                String timeZone = " \"timeZone\" : " + squareId.getTimeZone();
-                String weekDay = " \"weekDay\" : " + squareId.getWeekDay();
-                String squareI = " \"squareI\" : { \"$numberLong\" : " + squareId.getSquareI().values().iterator().next() + " } ";
-                String squareJ = " \"squareJ\" : { \"$numberLong\" : " + squareId.getSquareJ().values().iterator().next() + " } ";
-                String numSquare = " \"nSquare\" : { \"$numberLong\" : " + squareId.getnSquare().values().iterator().next() + " } ";
-                String str = "{" + timeZone + "," + weekDay + "," +
-                        squareI + "," + squareJ + "," +
-                        numSquare + "}";
-                result.put(str, fileIdDevProb);
-            }
+            i++;
         }
-        //System.out.println("Результат  " + result);
+
+       // System.out.println("Результат  " + result);
         return result;
     }
 
     // Map<JSON,Map<fileId, devProb>>
     public void createJSONforMesh(Map<String, Map<Long, Double>> nSquare) throws IOException {
 
-       // System.out.println("test " + nSquare);
+        //System.out.println("test " + nSquare);
         List<BasicDBObject> result = new ArrayList<BasicDBObject>();
         Map<String, String> meshJSON = new HashMap<String, String>();
         int i = 0;
@@ -122,12 +180,12 @@ public class SquareSortImpl implements SquareSort {
 
             /*средний квадрат отклонений равен
             средней из квадратов значений признака минус квадрат средней.*/
-            int j=0;
+            int j = 0;
             List<Long> keyListFileId = new ArrayList<Long>();
             keyListFileId.addAll(entry.keySet());
             for (Double affiliation : entry.values()) {
 
-               // System.out.println(square);
+                // System.out.println(square);
                 devices.add(new BasicDBObject()
                         .append("fileId", keyListFileId.get(j))
                         .append("devProb", affiliation));
@@ -156,13 +214,13 @@ public class SquareSortImpl implements SquareSort {
             result.add(meshSquare);
 
 
-           // meshSquare.clear();
+            // meshSquare.clear();
             i++;
 
 
         }
 
-        Set<BasicDBObject> set = new HashSet<BasicDBObject>(result);
+     /*   Set<BasicDBObject> set = new HashSet<BasicDBObject>(result);
         result.clear();
         result.addAll(set);
 
@@ -170,11 +228,11 @@ public class SquareSortImpl implements SquareSort {
         DB db = mongo.getDB("moto");
         DBCollection collection = db.getCollection("mesh_test");
 
-        collection.insert(result);
+        collection.insert(result);*/
 
 
         System.out.println(result.size());
-        System.out.println(result);
+      //  System.out.println(result);
     }
 
 
