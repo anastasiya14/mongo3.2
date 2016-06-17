@@ -34,12 +34,12 @@ public class FileIdAllImpl implements FileIdAll {
             MongoDatabase db = mongoClient.getDatabase("moto");
             MongoCollection<Document> collection = db.getCollection("test2");
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
-                    .projection(and(Projections.include("fileId"),Projections.excludeId()))
+                    .projection(and(Projections.include("fileId"), Projections.excludeId()))
                     .limit(2000)
                     .iterator();
             try {
                 String resultId = null;
-               // String loc = null;
+                // String loc = null;
                 while (cursor.hasNext()) {
                     resultId = cursor.next().toString().replaceAll("[A-Za-z\\{=]+", "").replaceAll("\\}}", "");
                     fileid.add(resultId);
@@ -56,7 +56,7 @@ public class FileIdAllImpl implements FileIdAll {
         fileid.clear();
         fileid.addAll(set);
 
-        return  fileid;
+        return fileid;
     }
 
 

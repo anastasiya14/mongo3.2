@@ -60,6 +60,6 @@ public class JSONtoDataImpl implements JSONtoData {
         } finally {
             mongoClient.close();
         }
-       return nSquareJSON;
+        return nSquareJSON;
     }
 }

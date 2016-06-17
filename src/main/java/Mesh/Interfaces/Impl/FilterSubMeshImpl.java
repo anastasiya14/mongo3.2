@@ -38,7 +38,6 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("squareJ");
 
 
-
             mongoClient = new MongoClient("10.130.101.9", 27017);
 
             // New way to get database
@@ -48,7 +47,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                  //  .limit(100)
+                    //.limit(1000000)
                     .iterator();
 
             try {
@@ -66,7 +65,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
         } finally {
             mongoClient.close();
         }
-       // System.out.println("Группы ТС " + result);
+        // System.out.println("Группы ТС " + result);
         return nSquareJSON;
     }
 }

@@ -64,7 +64,6 @@ public class MongoData {
     }
 
 
-
     @Override
     public String toString() {
         return new ToStringBuilder(this)

@@ -22,7 +22,7 @@ public class Mesh {
     private int weekDay;
     private int devCount;
     private double despersion;
-    private List<Devices> devices=new ArrayList<Devices>();
+    private List<Devices> devices = new ArrayList<Devices>();
 
     public Mesh() {
     }

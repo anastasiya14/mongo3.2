@@ -18,7 +18,7 @@ public class SquareSortImpl implements SquareSort {
 
     private static final int a = 1;
 
-    private static final int b = 300;
+    private static final int b = 30;
     //   private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
@@ -34,12 +34,11 @@ public class SquareSortImpl implements SquareSort {
 
         for (String entryString : nSquare) {
 
-           // System.out.println("----------- " + entryString);
+            // System.out.println("----------- " + entryString);
 
             ObjectMapper mapper = new ObjectMapper();
 
             SquaresSort squareId = mapper.readValue(entryString, SquaresSort.class);
-            id = squareId.getFileId().values().iterator().next();
 
             if (!numberRepetition.containsKey(entryString)) { //проверяет есть ли в мапе json
 
@@ -70,7 +69,7 @@ public class SquareSortImpl implements SquareSort {
             obj.put("squareJ", squareId.getSquareJ());
             obj.put("timeZone", squareId.getTimeZone());
             obj.put("weekDay", squareId.getWeekDay());
-          //  System.out.println(" obj = " + obj.toJSONString());
+            //  System.out.println(" obj = " + obj.toJSONString());
 
             //System.out.println("fileId = " +squareId.getFileId().values().iterator().next());
             if (squareNumberFileId.containsKey(obj.toJSONString())) {
@@ -80,7 +79,7 @@ public class SquareSortImpl implements SquareSort {
                     fileIdNum.putAll(squareNumberFileId.values().iterator().next());
 
                     fileIdNum.put(squareId.getFileId().values().iterator().next(), valueFileIdAndNumber.get(i));
-                  //  System.out.println("n :" + fileIdNum);
+                    //  System.out.println("n :" + fileIdNum);
                     squareNumberFileId.put(obj.toJSONString(), fileIdNum);
                 }
             } else {
@@ -91,9 +90,9 @@ public class SquareSortImpl implements SquareSort {
             i++;
         }
 
-       // System.out.println("numberRepetition " + numberRepetition);
-       // System.out.println("numberList " + nSquare.size());
-       // System.out.println("Map<JSON c нужными параметрами,Map<fileID,кол-во повторений>>  " + squareNumberFileId);
+        // System.out.println("numberRepetition " + numberRepetition);
+        // System.out.println("numberList " + nSquare.size());
+        // System.out.println("Map<JSON c нужными параметрами,Map<fileID,кол-во повторений>>  " + squareNumberFileId);
         return squareNumberFileId;
     }
 
@@ -102,7 +101,7 @@ public class SquareSortImpl implements SquareSort {
 
         /* оценка записей, удаление лишних*/
 
-      //  System.out.println("nSquare  " + nSquare);
+        //  System.out.println("nSquare  " + nSquare);
 
         Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
 
@@ -116,21 +115,21 @@ public class SquareSortImpl implements SquareSort {
             SquaresSort squareId = mapper.readValue(valueString.get(i), SquaresSort.class);
 
 
-            valueFileId.addAll(nSquare.values());
+           // valueFileId.addAll(nSquare.values());
 
             Map<Long, Double> fileIdDevProb = new HashMap<Long, Double>();//fileId, devProb
             for (Long longFileId : entry.keySet()) {
                 double alpha = 0;
                 Long x = entry.get(longFileId);
                 //System.out.println("fileId = " + entry.keySet());
-                System.out.println("x = " + x);
+                //System.out.println("x = " + x);
                 if (a <= x && x <= b) {
                     alpha = ((double) (x - a) / (double) (b - a));
-                  //  System.out.println("alpha = " + alpha);
+                    //  System.out.println("alpha = " + alpha);
 
                 } else {
                     alpha = 1;
-                 //   System.out.println("alpha = " + alpha);
+                    //   System.out.println("alpha = " + alpha);
                 }
 
                 if (alpha >= degree) {
@@ -152,7 +151,7 @@ public class SquareSortImpl implements SquareSort {
             i++;
         }
 
-       // System.out.println("Результат  " + result);
+        // System.out.println("Результат  " + result);
         return result;
     }
 
@@ -220,7 +219,7 @@ public class SquareSortImpl implements SquareSort {
 
         }
 
-     /*   Set<BasicDBObject> set = new HashSet<BasicDBObject>(result);
+        Set<BasicDBObject> set = new HashSet<BasicDBObject>(result);
         result.clear();
         result.addAll(set);
 
@@ -228,11 +227,11 @@ public class SquareSortImpl implements SquareSort {
         DB db = mongo.getDB("moto");
         DBCollection collection = db.getCollection("mesh_test");
 
-        collection.insert(result);*/
+        collection.insert(result);
 
 
         System.out.println(result.size());
-      //  System.out.println(result);
+        //  System.out.println(result);
     }
 
 
