@@ -20,7 +20,7 @@ import org.junit.Test;
 public class MyTest {
     @Test
     public void testTrue() throws Exception {
-        SquareSortImpl squareSort = new SquareSortImpl();
+    /*    SquareSortImpl squareSort = new SquareSortImpl();
         List<String> json = new ArrayList<String>();
         json.add("{ \"fileId\" : { \"$numberLong\" : \"2\" }, \"weekDay\" : 3.0, " +
                 "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +

@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public interface SquareSort {
 
-    public Map<String, Map<Long, Long>> numberFileIdinSquare(List<String> nSquare) throws IOException;
+    public Map<String, Map<Long, Long>> numberFileIdinSquare(Map<String, Long> numberRepetition) throws IOException;
 
     public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException;
 

@@ -18,39 +18,17 @@ public class SquareSortImpl implements SquareSort {
 
     private static final int a = 1;
 
-    private static final int b = 30;
+    private static final int b = 300;
     //   private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
-    public Map<String, Map<Long, Long>> numberFileIdinSquare(List<String> nSquare) throws IOException {
+    public Map<String, Map<Long, Long>> numberFileIdinSquare(Map<String, Long> numberRepetition) throws IOException {
 
         Map<String, Map<Long, Long>> squareNumberFileId = new HashMap<String, Map<Long, Long>>();
 
         Map<Long, Long> numberFileId = new HashMap<Long, Long>();
 
-
-        Map<String, Long> numberRepetition = new HashMap<String, Long>();
         Long id = null;
-
-        for (String entryString : nSquare) {
-
-            // System.out.println("----------- " + entryString);
-
-            ObjectMapper mapper = new ObjectMapper();
-
-            SquaresSort squareId = mapper.readValue(entryString, SquaresSort.class);
-
-            if (!numberRepetition.containsKey(entryString)) { //проверяет есть ли в мапе json
-
-                numberRepetition.put(entryString, (long) 1);
-
-            } else {
-
-                numberRepetition.put(entryString, numberRepetition.get(entryString) + 1);
-            }
-
-
-        }
         int i = 0;
         List<Long> valueFileIdAndNumber = new ArrayList<Long>();
         valueFileIdAndNumber.addAll(numberRepetition.values());
@@ -225,7 +203,7 @@ public class SquareSortImpl implements SquareSort {
 
         Mongo mongo = new Mongo("10.130.101.9", 27017);
         DB db = mongo.getDB("moto");
-        DBCollection collection = db.getCollection("mesh_test");
+        DBCollection collection = db.getCollection("mesh_test1");
 
         collection.insert(result);
 
