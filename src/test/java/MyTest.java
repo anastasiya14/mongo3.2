@@ -7,7 +7,9 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
+import Mesh.POJOjson.SquaresSort;
 import com.mongodb.BasicDBObject;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.junit.Test;
 
@@ -20,154 +22,95 @@ import org.junit.Test;
 public class MyTest {
     @Test
     public void testTrue() throws Exception {
-    /*    SquareSortImpl squareSort = new SquareSortImpl();
+        SquareSortImpl squareSort = new SquareSortImpl();
         List<String> json = new ArrayList<String>();
         json.add("{ \"fileId\" : { \"$numberLong\" : \"2\" }, \"weekDay\" : 3.0, " +
                 "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
                 "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
                 "\"$numberLong\" : \"7553\" } }\n");
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"2\" }, \"weekDay\" : 3.0, " +
-                "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
-
-
         json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 3.0, " +
                 "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
                 "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
                 "\"$numberLong\" : \"7553\" } }\n");
-
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 3.0, " +
-                "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
-
-        Map<Long, Long> result = new HashMap<Long, Long>();
-        result.put((long) 2, (long) 2);
-        result.put((long) 3, (long) 2);
-
-        JSONObject obj = new JSONObject();
-        obj.put("nSquare", 8526381);
-        obj.put("squareI", 578);
-        obj.put("squareJ", 7553);
-        obj.put("timeZone", 201);
-        obj.put("weekDay", 3);
-
-
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
-
-        Map<Long, Long> result1 = new HashMap<Long, Long>();
-        result1.put((long) 3, (long) 1);
-
+        int i = 0;
+        Map<String, Map<Long, Long>> gg = new HashMap<String, Map<Long, Long>>();
+        Map<String, Long> res1 = new HashMap<String, Long>();
         JSONObject obj1 = new JSONObject();
-        obj.put("nSquare", 8526381);
-        obj.put("squareI", 578);
-        obj.put("squareJ", 7553);
-        obj.put("timeZone", 201);
-        obj.put("weekDay", 4);
+        Map<Long, Long> test = new HashMap<Long, Long>();
+        for (String entry : json) {
+
+            ObjectMapper mapper = new ObjectMapper();
+            SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
+
+            JSONObject obj = new JSONObject();
+            obj.put("nSquare", squareId.getnSquare());
+            obj.put("squareI", squareId.getSquareI());
+            obj.put("squareJ", squareId.getSquareJ());
+            obj.put("fileId",  squareId.getFileId());
+            obj.put("timeZone", squareId.getTimeZone());
+            obj.put("weekDay", squareId.getWeekDay());
 
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"852638441\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
 
-        Map<Long, Long> result2 = new HashMap<Long, Long>();
-        result2.put((long) 3, (long) 1);
+            obj1.put("nSquare", squareId.getnSquare());
+            obj1.put("squareI", squareId.getSquareI());
+            obj1.put("squareJ", squareId.getSquareJ());
+            obj1.put("timeZone", squareId.getTimeZone());
+            obj1.put("weekDay", squareId.getWeekDay());
 
-        JSONObject obj2 = new JSONObject();
-        obj.put("nSquare", 852638441);
-        obj.put("squareI", 578);
-        obj.put("squareJ", 7553);
-        obj.put("timeZone", 201);
-        obj.put("weekDay", 4);
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 251.0, \"nSquare\" : { \"$numberLong\" : \"852638441\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 251.0, \"nSquare\" : { \"$numberLong\" : \"852638441\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 251.0, \"nSquare\" : { \"$numberLong\" : \"852638441\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 251.0, \"nSquare\" : { \"$numberLong\" : \"852638441\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"7\" }, \"weekDay\" : 4.0, " +
-                "\"timeZone\" : 251.0, \"nSquare\" : { \"$numberLong\" : \"852638441\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
+            System.out.println(obj.toJSONString());
 
-        Map<Long, Long> result3 = new HashMap<Long, Long>();
-        result3.put((long) 3, (long) 4);
-        result3.put((long) 7, (long) 1);
+            if (i == 0) {
 
-        JSONObject obj3 = new JSONObject();
-        obj.put("nSquare", 852638441);
-        obj.put("squareI", 578);
-        obj.put("squareJ", 7553);
-        obj.put("timeZone", 251);
-        obj.put("weekDay", 4);
+                test.put((long) 2, (long) 2);
+                gg.put(obj1.toJSONString(), test);
+                res1.put(obj.toJSONString(), (long) 2);
 
-        assertEquals(4, squareSort.numberFileIdinSquare(json).size());
+            } else {
 
-        Map<String, Map<Long, Long>> d = squareSort.numberFileIdinSquare(json);
-      //  List<String> list=new ArrayList<String>();
-     //   list.addAll(d.keySet());
-        int i=0;
-        for (Map<Long, Long> entry:d.values()) {
-            switch (i){case 0:
-                assertEquals(result, entry);
-                break;
-                case 1:assertEquals(result1, entry);
+                test.put((long) 3, (long) 5);
+                gg.put(obj1.toJSONString(), test);
 
-                    break;
-                case 2:assertEquals(result2, entry);
-
-                    break;
-                case 3:assertEquals(result3, entry);
-
-                    break;
+                res1.put(obj.toJSONString(), (long) 5);
             }
             i++;
 
         }
 
-        Map<String, Map<Long, Double>> dd = squareSort.assessment(squareSort.numberFileIdinSquare(json));
-        int j=0;
+        Map<String, Map<Long, Long>> d = squareSort.numberFileIdinSquare(res1);
+
+        System.out.println(d);
+
+        assertEquals(gg, d);
 
 
-        squareSort.createJSONforMesh(dd);
-       /* for (Map<Long, Double> entry:dd.values()) {
-            switch (j){case 0:
-                assertEquals(result, entry);
-                break;
-                case 1:assertEquals(result1, entry);
+       // Map<String, Map<Long, Double>> dd=new HashMap<String, Map<Long, Double>>();
+       // assertEquals(dd,squareSort.assessment(d));
+       // System.out.println(squareSort.assessment(d)+" = "+dd);
 
-                    break;
-                case 2:assertEquals(result2, entry);
 
-                    break;
-                case 3:assertEquals(result3, entry);
+       /* Map<String, Map<Long, Double>> dd=new HashMap<String, Map<Long, Double>>();
+        Map<Long, Double> assessment=new HashMap<Long, Double>();
+        assessment.put((long)2,1.0);
+        assessment.put((long)3,1.0);
+        dd.put(obj1.toJSONString(),assessment);
+         assertEquals(dd,squareSort.assessment(d));
+         System.out.println(squareSort.assessment(d)+" = "+dd);*/
 
-                    break;
-            }
-           j++;
+       /* Map<String, Map<Long, Double>> dd=new HashMap<String, Map<Long, Double>>();
+        Map<Long, Double> assessment=new HashMap<Long, Double>();
+        assessment.put((long)2, (double)(((double)2-(double)1)/((double)2.2-(double)1)));
+        assessment.put((long)3,1.0);
+        dd.put(obj1.toJSONString(),assessment);
+        assertEquals(dd,squareSort.assessment(d));
+        System.out.println(squareSort.assessment(d)+" = "+dd);*/
 
-        }*/
     }
 
 

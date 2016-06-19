@@ -16,9 +16,9 @@ import java.util.*;
  */
 public class SquareSortImpl implements SquareSort {
 
-    private static final int a = 1;
+    private static final double a = 1;
 
-    private static final int b = 300;
+    private static final double b = 300;
     //   private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
@@ -102,7 +102,7 @@ public class SquareSortImpl implements SquareSort {
                 //System.out.println("fileId = " + entry.keySet());
                 //System.out.println("x = " + x);
                 if (a <= x && x <= b) {
-                    alpha = ((double) (x - a) / (double) (b - a));
+                    alpha = ((double) ((double)x - (double)a) / (double) ((double)b - (double)a));
                     //  System.out.println("alpha = " + alpha);
 
                 } else {
