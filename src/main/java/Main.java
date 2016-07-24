@@ -12,8 +12,8 @@ import java.util.logging.Logger;
  *
  * @author Anastasiya Plotnikova
  */
-public class main {
-    private static Logger logger = Logger.getLogger(String.valueOf(main.class));
+public class Main {
+    private static Logger logger = Logger.getLogger(String.valueOf(Main.class));
 
     public static void main(String[] args) throws Exception {
 
@@ -22,11 +22,12 @@ public class main {
         FilterSubMesh filterSubMesh = new FilterSubMeshImpl();
         SquareSortImpl squareSort = new SquareSortImpl();
 
-       // squareSort.createJSONforMesh(squareSort.assessment(squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh())));
+        squareSort.createJSONforMesh(squareSort.assessment(squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh())));
 
 
         // squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh());
-         JSONtoDataImpl jsoNtoData = new JSONtoDataImpl();
-         jsoNtoData.jsonToData();
+
+        // JSONtoDataImpl jsoNtoData = new JSONtoDataImpl();
+        // jsoNtoData.jsonToData();
     }
 }

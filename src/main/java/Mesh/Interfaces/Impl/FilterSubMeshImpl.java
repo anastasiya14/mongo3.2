@@ -48,20 +48,24 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("squareJ");
 
 
-            mongoClient = new MongoClient("10.130.101.9", 27017);
+          //  mongoClient = new MongoClient("10.130.101.9", 27017);
+            mongoClient = new MongoClient("127.0.0.1", 27017);
 
             // New way to get database
             MongoDatabase db = mongoClient.getDatabase("moto");
-            MongoCollection<Document> collection = db.getCollection("preWeb_test4");
+            MongoCollection<Document> collection = db.getCollection("preWeb_test5");
 
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(1000000)
+                  //  .limit(100)
                     .iterator();
 
+            int i=1;
             try {
                 while (cursor.hasNext()) {
+
+                    System.out.println(i++);
 
                     String json = cursor.next().toJson();
                     //nSquareJSON.add(json);
@@ -78,16 +82,18 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                         numberRepetition.put(json, numberRepetition.get(json) + 1);
                     }
 
+
                 }
                 mongoClient.close();
             } catch (Exception w) {
             }
-            //result.add(nSquareJSON);
+            finally {
+                cursor.close();
+            }
 
         } finally {
             mongoClient.close();
         }
-        // System.out.println("Группы ТС " + result);
         return  numberRepetition;
     }
 }
