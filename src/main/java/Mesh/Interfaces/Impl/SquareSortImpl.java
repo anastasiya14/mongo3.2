@@ -91,7 +91,7 @@ public class SquareSortImpl implements SquareSort {
                 Long x = entry.get(longFileId);
 
                 if (a <= x && x <= b) {
-                    alpha = ((double) ((double)x - (double)a) / (double) ((double)b - (double)a));
+                    alpha = ((double) ((double) x - (double) a) / (double) ((double) b - (double) a));
 
 
                 } else {
@@ -112,7 +112,7 @@ public class SquareSortImpl implements SquareSort {
                     result.put(obj.toJSONString(), fileIdDevProb);
                 }
                 {
-                    //System.out.println("  < 0.8   ");
+                    // System.out.println("  < 0.8   ");
                 }
             }
             i++;
@@ -121,7 +121,7 @@ public class SquareSortImpl implements SquareSort {
         return result;
     }
 
-    public void createJSONforMesh(Map<String, Map<Long, Double>> nSquare) throws IOException {
+    public void createJSONforMesh(Map<String, Map<Long, Double>> nSquare, String endCollectionName) throws IOException {
 
         List<BasicDBObject> result = new ArrayList<BasicDBObject>();
         Map<String, String> meshJSON = new HashMap<String, String>();
@@ -182,10 +182,11 @@ public class SquareSortImpl implements SquareSort {
         result.clear();
         result.addAll(set);
 
-       // Mongo mongo = new Mongo("10.130.101.9", 27017);
+        // Mongo mongo = new Mongo("10.130.101.9", 27017);
         Mongo mongo = new Mongo("127.0.0.1", 27017);
         DB db = mongo.getDB("moto");
-        DBCollection collection = db.getCollection("mesh_test5");
+        System.out.println(endCollectionName);
+        DBCollection collection = db.getCollection(endCollectionName);
 
         collection.insert(result);
 

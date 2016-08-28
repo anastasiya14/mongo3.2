@@ -26,7 +26,7 @@ import static com.mongodb.client.model.Filters.and;
 public class FilterSubMeshImpl implements FilterSubMesh {
     private static final Long timeZone = (long) 288;
 
-    public Map<String, Long> filterSubMesh() {
+    public Map<String, Long> filterSubMesh(String startCollectionName) {
         MongoClient mongoClient = null;
         List<String> nSquareJSON = new ArrayList<String>();
         List<List<String>> result = new ArrayList<List<String>>();
@@ -48,20 +48,21 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("squareJ");
 
 
-          //  mongoClient = new MongoClient("10.130.101.9", 27017);
+            //mongoClient = new MongoClient("10.130.101.9", 27017);
             mongoClient = new MongoClient("127.0.0.1", 27017);
+
 
             // New way to get database
             MongoDatabase db = mongoClient.getDatabase("moto");
-            MongoCollection<Document> collection = db.getCollection("preWeb_test5");
+            MongoCollection<Document> collection = db.getCollection(startCollectionName);
 
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                  //  .limit(100)
+                    .limit(10)
                     .iterator();
 
-            int i=1;
+            int i = 1;
             try {
                 while (cursor.hasNext()) {
 
@@ -86,14 +87,13 @@ public class FilterSubMeshImpl implements FilterSubMesh {
                 }
                 mongoClient.close();
             } catch (Exception w) {
-            }
-            finally {
+            } finally {
                 cursor.close();
             }
 
         } finally {
             mongoClient.close();
         }
-        return  numberRepetition;
+        return numberRepetition;
     }
 }

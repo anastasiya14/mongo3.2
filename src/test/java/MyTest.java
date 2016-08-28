@@ -47,10 +47,9 @@ public class MyTest {
             obj.put("nSquare", squareId.getnSquare());
             obj.put("squareI", squareId.getSquareI());
             obj.put("squareJ", squareId.getSquareJ());
-            obj.put("fileId",  squareId.getFileId());
+            obj.put("fileId", squareId.getFileId());
             obj.put("timeZone", squareId.getTimeZone());
             obj.put("weekDay", squareId.getWeekDay());
-
 
 
             obj1.put("nSquare", squareId.getnSquare());
@@ -58,10 +57,6 @@ public class MyTest {
             obj1.put("squareJ", squareId.getSquareJ());
             obj1.put("timeZone", squareId.getTimeZone());
             obj1.put("weekDay", squareId.getWeekDay());
-
-
-
-
 
 
             System.out.println(obj.toJSONString());
@@ -90,9 +85,9 @@ public class MyTest {
         assertEquals(gg, d);
 
 
-       // Map<String, Map<Long, Double>> dd=new HashMap<String, Map<Long, Double>>();
-       // assertEquals(dd,squareSort.assessment(d));
-       // System.out.println(squareSort.assessment(d)+" = "+dd);
+        // Map<String, Map<Long, Double>> dd=new HashMap<String, Map<Long, Double>>();
+        // assertEquals(dd,squareSort.assessment(d));
+        // System.out.println(squareSort.assessment(d)+" = "+dd);
 
 
        /* Map<String, Map<Long, Double>> dd=new HashMap<String, Map<Long, Double>>();
