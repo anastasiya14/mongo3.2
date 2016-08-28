@@ -8,15 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e854e352-1a0d-4ef6-a9de-b3228d581c94" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/FilterSubMesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/FilterSubMesh.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/FilterSubMeshImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/FilterSubMeshImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/SquareSortImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/Impl/SquareSortImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/SquareSort.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh/Interfaces/SquareSort.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/MyTest.java" afterPath="$PROJECT_DIR$/src/test/java/MyTest.java" />
     </list>
     <ignored path="sliceMongo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1108,7 +1101,7 @@
       <workItem from="1472329059124" duration="257000" />
       <workItem from="1472381326326" duration="481000" />
       <workItem from="1472381848872" duration="12474000" />
-      <workItem from="1472398596427" duration="666000" />
+      <workItem from="1472398596427" duration="735000" />
     </task>
     <task id="LOCAL-00001" summary="Получает все данные с базы и парсит JSON c помощью Jakson">
       <created>1459185273344</created>
@@ -1278,7 +1271,13 @@
       <option name="project" value="LOCAL" />
       <updated>1469393733741</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="добавлено параллельное выполнение">
+      <created>1472399295306</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1472399295306</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1314,7 +1313,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="339210000" />
+    <option name="totallyTimeSpent" value="339279000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1407,7 +1406,8 @@
     <MESSAGE value="nSquareId +заполнение списка + создание сетки + выборка данных и помещение их в список" />
     <MESSAGE value="nSquareId +заполнение списка + создание сетки + выборка данных и помещение их в список (пофиксила баг)" />
     <MESSAGE value="nSquareId +delete list" />
-    <option name="LAST_COMMIT_MESSAGE" value="nSquareId +delete list" />
+    <MESSAGE value="добавлено параллельное выполнение" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавлено параллельное выполнение" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
