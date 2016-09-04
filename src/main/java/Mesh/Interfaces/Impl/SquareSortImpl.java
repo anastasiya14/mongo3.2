@@ -182,8 +182,8 @@ public class SquareSortImpl implements SquareSort {
         result.clear();
         result.addAll(set);
 
-        // Mongo mongo = new Mongo("10.130.101.9", 27017);
-        Mongo mongo = new Mongo("127.0.0.1", 27017);
+         Mongo mongo = new Mongo("10.130.101.9", 27017);
+       // Mongo mongo = new Mongo("127.0.0.1", 27017);
         DB db = mongo.getDB("moto");
         System.out.println(endCollectionName);
         DBCollection collection = db.getCollection(endCollectionName);

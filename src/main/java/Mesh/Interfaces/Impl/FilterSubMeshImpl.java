@@ -48,8 +48,8 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("squareJ");
 
 
-            //mongoClient = new MongoClient("10.130.101.9", 27017);
-            mongoClient = new MongoClient("127.0.0.1", 27017);
+            mongoClient = new MongoClient("10.130.101.9", 27017);
+           // mongoClient = new MongoClient("127.0.0.1", 27017);
 
 
             // New way to get database
