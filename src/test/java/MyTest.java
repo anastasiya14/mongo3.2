@@ -24,15 +24,9 @@ public class MyTest {
     public void testTrue() throws Exception {
         SquareSortImpl squareSort = new SquareSortImpl();
         List<String> json = new ArrayList<String>();
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"2\" }, \"weekDay\" : 3.0, " +
-                "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
+        json.add("{ \"fileId\" : { \"$numberLong\" : \"291\" }, \"weekDay\" : 3.0, \"timeZone\" : 201.0, \"squareI\" : { \"$numberLong\" : \"1\" }, \"squareJ\" : { \"$numberLong\" : \"3781\" } }\n");
 
-        json.add("{ \"fileId\" : { \"$numberLong\" : \"3\" }, \"weekDay\" : 3.0, " +
-                "\"timeZone\" : 201.0, \"nSquare\" : { \"$numberLong\" : \"8526381\" }, " +
-                "\"squareI\" : { \"$numberLong\" : \"578\" }, \"squareJ\" : { " +
-                "\"$numberLong\" : \"7553\" } }\n");
+        json.add("{ \"fileId\" : { \"$numberLong\" : \"2922\" }, \"weekDay\" : 3.0, \"timeZone\" : 201.0, \"squareI\" : { \"$numberLong\" : \"1\" }, \"squareJ\" : { \"$numberLong\" : \"3781\" } }\n");
         int i = 0;
         Map<String, Map<Long, Long>> gg = new HashMap<String, Map<Long, Long>>();
         Map<String, Long> res1 = new HashMap<String, Long>();
@@ -44,7 +38,7 @@ public class MyTest {
             SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
 
             JSONObject obj = new JSONObject();
-            obj.put("nSquare", squareId.getnSquare());
+           // obj.put("nSquare", squareId.getnSquare());
             obj.put("squareI", squareId.getSquareI());
             obj.put("squareJ", squareId.getSquareJ());
             obj.put("fileId", squareId.getFileId());
@@ -52,7 +46,7 @@ public class MyTest {
             obj.put("weekDay", squareId.getWeekDay());
 
 
-            obj1.put("nSquare", squareId.getnSquare());
+          //  obj1.put("nSquare", squareId.getnSquare());
             obj1.put("squareI", squareId.getSquareI());
             obj1.put("squareJ", squareId.getSquareJ());
             obj1.put("timeZone", squareId.getTimeZone());
@@ -77,11 +71,14 @@ public class MyTest {
             i++;
 
         }
+        System.out.println("+++++++++++++++++++++++++++++++"+res1);
 
         Map<String, Map<Long, Long>> d = squareSort.numberFileIdinSquare(res1);
 
         System.out.println(d);
 
+        //System.out.println();
+        squareSort.createJSONforMesh(squareSort.assessment(d),"test");
         assertEquals(gg, d);
 
 

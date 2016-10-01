@@ -27,44 +27,32 @@ public class SquareSortImpl implements SquareSort {
         Map<String, Map<Long, Long>> squareNumberFileId = new HashMap<String, Map<Long, Long>>();
 
         Map<Long, Long> numberFileId = new HashMap<Long, Long>();
-
+        //System.out.println("numberRepetition " + numberRepetition);
         Long id = null;
         int i = 0;
         List<Long> valueFileIdAndNumber = new ArrayList<Long>();
         valueFileIdAndNumber.addAll(numberRepetition.values());
-
-
+        Map<Long, Long> fileIdNum = new HashMap<Long, Long>();
+        JSONObject obj = new JSONObject();
         for (String entry : numberRepetition.keySet()) {
-
+            //System.out.println("entry-------------------- " + entry);
             ObjectMapper mapper = new ObjectMapper();
 
             SquaresSort squareId = mapper.readValue(entry, SquaresSort.class);
             id = squareId.getFileId().values().iterator().next();
 
-            JSONObject obj = new JSONObject();
-            obj.put("nSquare", squareId.getnSquare());
+
             obj.put("squareI", squareId.getSquareI());
             obj.put("squareJ", squareId.getSquareJ());
             obj.put("timeZone", squareId.getTimeZone());
             obj.put("weekDay", squareId.getWeekDay());
 
-            if (squareNumberFileId.containsKey(obj.toJSONString())) {
-                if (!squareNumberFileId.containsKey(squareId.getFileId().values().iterator().next())) {
-
-                    Map<Long, Long> fileIdNum = new HashMap<Long, Long>();
-                    fileIdNum.putAll(squareNumberFileId.values().iterator().next());
-
-                    fileIdNum.put(squareId.getFileId().values().iterator().next(), valueFileIdAndNumber.get(i));
-                    squareNumberFileId.put(obj.toJSONString(), fileIdNum);
-                }
-            } else {
-                Map<Long, Long> fileIdNum = new HashMap<Long, Long>();
-                fileIdNum.put(id, valueFileIdAndNumber.get(i));
-                squareNumberFileId.put(obj.toJSONString(), fileIdNum);
-            }
+            fileIdNum.put(id, valueFileIdAndNumber.get(i));
+            squareNumberFileId.put(obj.toJSONString(), fileIdNum);
             i++;
+           // System.out.println("-------------------- " + squareNumberFileId);
         }
-
+       // System.out.println("squareNumberFileId " + squareNumberFileId);
         return squareNumberFileId;
     }
 
@@ -72,7 +60,7 @@ public class SquareSortImpl implements SquareSort {
     public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
 
         /* оценка записей, удаление лишних*/
-        System.out.print(nSquare);
+        //System.out.print(nSquare);
         Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
 
         List<String> valueString = new ArrayList<String>();
@@ -103,7 +91,7 @@ public class SquareSortImpl implements SquareSort {
 
                     fileIdDevProb.put(longFileId, alpha);
                     JSONObject obj = new JSONObject();
-                    obj.put("nSquare", squareId.getnSquare());
+                    //obj.put("nSquare", squareId.getnSquare());
                     obj.put("squareI", squareId.getSquareI());
                     obj.put("squareJ", squareId.getSquareJ());
                     obj.put("timeZone", squareId.getTimeZone());
@@ -112,12 +100,12 @@ public class SquareSortImpl implements SquareSort {
                     result.put(obj.toJSONString(), fileIdDevProb);
                 }
                 {
-                    // System.out.println("  < 0.8   ");
+                    System.out.println("  < 0.8   ");
                 }
             }
             i++;
         }
-
+       // System.out.print(result);
         return result;
     }
 
@@ -130,6 +118,8 @@ public class SquareSortImpl implements SquareSort {
         List<String> keyList = new ArrayList<String>();
 
         keyList.addAll(nSquare.keySet());
+
+        //System.out.println(nSquare);
 
         for (Map<Long, Double> entry : nSquare.values()) {
 
@@ -164,7 +154,7 @@ public class SquareSortImpl implements SquareSort {
             BasicDBObject meshSquare = new BasicDBObject();
             meshSquare.put("timeZone", square.getTimeZone());
             meshSquare.put("weekDay", square.getWeekDay());
-            meshSquare.put("nSquare", square.getnSquare().values().iterator().next());
+            //meshSquare.put("nSquare", square.getnSquare().values().iterator().next());
             meshSquare.put("squareI", square.getSquareI().values().iterator().next());
             meshSquare.put("squareJ", square.getSquareJ().values().iterator().next());
             meshSquare.put("devCount", devCount);
@@ -183,15 +173,10 @@ public class SquareSortImpl implements SquareSort {
         result.addAll(set);
 
          Mongo mongo = new Mongo("10.130.101.9", 27017);
-       // Mongo mongo = new Mongo("127.0.0.1", 27017);
-        DB db = mongo.getDB("moto");
-        System.out.println(endCollectionName);
-        DBCollection collection = db.getCollection(endCollectionName);
-
-        collection.insert(result);
-
-
-        System.out.println(result.size());
+        // Mongo mongo = new Mongo("127.0.0.1", 27017);
+         DB db = mongo.getDB("moto");
+         DBCollection collection = db.getCollection(endCollectionName);
+         collection.insert(result);
     }
 
 

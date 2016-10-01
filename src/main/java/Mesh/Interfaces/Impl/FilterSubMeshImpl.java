@@ -40,7 +40,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
         try {
 
             List<String> filter = new ArrayList<String>();
-            filter.add("nSquare");
+          //  filter.add("nSquare");
             filter.add("timeZone");
             filter.add("weekDay");
             filter.add("fileId");
@@ -59,16 +59,19 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    .limit(1000000)
+                   // .limit(1000)
                     .iterator();
+
+
 
             int i = 1;
             try {
                 while (cursor.hasNext()) {
 
-                    System.out.println(i++);
+                   // System.out.println(i++);
 
                     String json = cursor.next().toJson();
+                    System.out.println(json);
                     //nSquareJSON.add(json);
                     ObjectMapper mapper = new ObjectMapper();
 
