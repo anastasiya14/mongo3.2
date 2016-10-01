@@ -30,22 +30,22 @@ public class Main {
         final SquareSortImpl squareSort = new SquareSortImpl();
 
         final List<String> startCollectionList = new ArrayList<String>();
-        startCollectionList.add("preMesh_traffic_1");
-        startCollectionList.add("preMesh_traffic_2");
+       // startCollectionList.add("preMesh_traffic_1");
+       // startCollectionList.add("preMesh_traffic_2");
         startCollectionList.add("preMesh_traffic_3");
-        startCollectionList.add("preMesh_traffic_4");
-        startCollectionList.add("preMesh_traffic_5");
-        startCollectionList.add("preMesh_traffic_6");
+       // startCollectionList.add("preMesh_traffic_4");
+       // startCollectionList.add("preMesh_traffic_5");
+       // startCollectionList.add("preMesh_traffic_6");
         startCollectionList.add("preMesh_traffic_7");
 
 
         final List<String> endCollectionList = new ArrayList<String>();
-        endCollectionList.add("mesh_1");
-        endCollectionList.add("mesh_2");
+       // endCollectionList.add("mesh_1");
+      //  endCollectionList.add("mesh_2_test");
         endCollectionList.add("mesh_3");
-        endCollectionList.add("mesh_4");
-        endCollectionList.add("mesh_5");
-        endCollectionList.add("mesh_6");
+      //  endCollectionList.add("mesh_4");
+      //  endCollectionList.add("mesh_5");
+       // endCollectionList.add("mesh_6");
         endCollectionList.add("mesh_7");
 
         //последовательное выполнение

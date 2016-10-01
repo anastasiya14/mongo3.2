@@ -18,7 +18,7 @@ public class SquareSortImpl implements SquareSort {
 
     private static final double a = 1;
 
-    private static final double b = 300;
+    private static final double b = 1200;
     //   private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
@@ -72,7 +72,7 @@ public class SquareSortImpl implements SquareSort {
     public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
 
         /* оценка записей, удаление лишних*/
-
+        System.out.print(nSquare);
         Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
 
         List<String> valueString = new ArrayList<String>();
