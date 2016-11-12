@@ -31,22 +31,22 @@ public class Main {
 
         final List<String> startCollectionList = new ArrayList<String>();
         startCollectionList.add("preMesh_traffic_1");
-        startCollectionList.add("preMesh_traffic_2");
+       // startCollectionList.add("preMesh_traffic_2");
         startCollectionList.add("preMesh_traffic_3");
-        startCollectionList.add("preMesh_traffic_4");
-        startCollectionList.add("preMesh_traffic_5");
-       // startCollectionList.add("preMesh_traffic_6");
-      //  startCollectionList.add("preMesh_traffic_7");
+       // startCollectionList.add("preMesh_traffic_4");
+        //startCollectionList.add("preMesh_traffic_5");
+        startCollectionList.add("preMesh_traffic_6");
+        startCollectionList.add("preMesh_traffic_7");
 
 
         final List<String> endCollectionList = new ArrayList<String>();
-        endCollectionList.add("mesh_1");
-        endCollectionList.add("mesh_2_test");
-        endCollectionList.add("mesh_3");
-        endCollectionList.add("mesh_4");
-        endCollectionList.add("mesh_5");
-        //endCollectionList.add("mesh_6");
-        //endCollectionList.add("mesh_7");
+        endCollectionList.add("mesh_1day");
+        //endCollectionList.add("mesh_2day");
+        endCollectionList.add("mesh_3day");
+       // endCollectionList.add("mesh_4day");
+       // endCollectionList.add("mesh_5day");
+        endCollectionList.add("mesh_6day");
+        endCollectionList.add("mesh_7day");
 
         //последовательное выполнение
     /*    int i = 0;
@@ -64,7 +64,7 @@ public class Main {
             i++;
         }*/
 
-        ExecutorService executor = Executors.newFixedThreadPool(7);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
 
         int i = 0;
         for (String entry : startCollectionList) {

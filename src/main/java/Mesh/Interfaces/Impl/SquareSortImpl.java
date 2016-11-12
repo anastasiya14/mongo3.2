@@ -11,14 +11,14 @@ import java.util.*;
 
 /**
  * Created: 07.06.16 17:51
- *
+
  * @author Anastasiya Plotnikova
  */
 public class SquareSortImpl implements SquareSort {
 
     private static final double a = 1;
 
-    private static final double b = 1200;
+    private static final double b =2400;
     //   private static final int b = 18000; //9000 записей за месяц (30 сек)
     private static final double degree = 0.8;
 
@@ -43,14 +43,20 @@ public class SquareSortImpl implements SquareSort {
 
 
             obj.put("squareI", squareId.getSquareI());
+           // System.out.println("-------------------- " + squareId.getSquareI());
             obj.put("squareJ", squareId.getSquareJ());
+          //  System.out.println("-------------------- " + squareId.getSquareJ());
             obj.put("timeZone", squareId.getTimeZone());
+         //   System.out.println("-------------------- " + squareId.getTimeZone());
             obj.put("weekDay", squareId.getWeekDay());
+         //   System.out.println("-------------------- " + squareId.getWeekDay());
 
             fileIdNum.put(id, valueFileIdAndNumber.get(i));
             squareNumberFileId.put(obj.toJSONString(), fileIdNum);
             i++;
-           // System.out.println("-------------------- " + squareNumberFileId);
+           // obj = null;
+            System.gc();
+          //  System.out.println("-------------------- " + squareNumberFileId);
         }
        // System.out.println("squareNumberFileId " + squareNumberFileId);
         return squareNumberFileId;
@@ -58,7 +64,7 @@ public class SquareSortImpl implements SquareSort {
 
 
     public Map<String, Map<Long, Double>> assessment(Map<String, Map<Long, Long>> nSquare) throws IOException {
-
+        System.out.println("++++++++++++++++++++++++++++++++++++ ");
         /* оценка записей, удаление лишних*/
         //System.out.print(nSquare);
         Map<String, Map<Long, Double>> result = new HashMap<String, Map<Long, Double>>();
@@ -100,7 +106,7 @@ public class SquareSortImpl implements SquareSort {
                     result.put(obj.toJSONString(), fileIdDevProb);
                 }
                 {
-                    System.out.println("  < 0.8   ");
+                    //System.out.println("  < 0.8   ");
                 }
             }
             i++;
@@ -162,7 +168,8 @@ public class SquareSortImpl implements SquareSort {
             meshSquare.put("devices", devices);
 
             result.add(meshSquare);
-
+            meshSquare=null;
+            System.gc();
             i++;
 
 
@@ -171,7 +178,7 @@ public class SquareSortImpl implements SquareSort {
         Set<BasicDBObject> set = new HashSet<BasicDBObject>(result);
         result.clear();
         result.addAll(set);
-
+        System.out.println(result);
          Mongo mongo = new Mongo("10.130.101.9", 27017);
         // Mongo mongo = new Mongo("127.0.0.1", 27017);
          DB db = mongo.getDB("moto");

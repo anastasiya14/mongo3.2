@@ -40,7 +40,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
         try {
 
             List<String> filter = new ArrayList<String>();
-          //  filter.add("nSquare");
+            //  filter.add("nSquare");
             filter.add("timeZone");
             filter.add("weekDay");
             filter.add("fileId");
@@ -49,7 +49,7 @@ public class FilterSubMeshImpl implements FilterSubMesh {
 
 
             mongoClient = new MongoClient("10.130.101.9", 27017);
-           // mongoClient = new MongoClient("127.0.0.1", 27017);
+            // mongoClient = new MongoClient("127.0.0.1", 27017);
 
 
             // New way to get database
@@ -59,36 +59,30 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                   // .limit(1000)
+                    //.limit(50)
                     .iterator();
 
 
-
-            int i = 1;
+            //int i = 1;
             try {
                 while (cursor.hasNext()) {
-
-                   // System.out.println(i++);
-
+///i++;
                     String json = cursor.next().toJson();
-                    System.out.println(json);
-                    //nSquareJSON.add(json);
                     ObjectMapper mapper = new ObjectMapper();
-
                     SquaresSort squareId = mapper.readValue(json, SquaresSort.class);
 
                     if (!numberRepetition.containsKey(json)) { //проверяет есть ли в мапе json
-
                         numberRepetition.put(json, (long) 1);
-
                     } else {
-
                         numberRepetition.put(json, numberRepetition.get(json) + 1);
                     }
-
-
+                    mapper=null;
+                    squareId = null;
+                    json = null;
+                    System.gc();
+                    //System.out.println(i);
                 }
-                mongoClient.close();
+               // mongoClient.close();
             } catch (Exception w) {
             } finally {
                 cursor.close();
