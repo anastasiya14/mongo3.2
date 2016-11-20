@@ -1,5 +1,6 @@
 package Mesh.POJOjson;
 
+import com.mongodb.BasicDBList;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -21,21 +22,19 @@ public class SquaresSort {
     private double devProb;
     private Map<String, Long> fileId = new HashMap<String, Long>();
     private Map<String, Long> nSquare = new HashMap<String, Long>();
-    private Map<String, Long> squareI = new HashMap<String, Long>();
-    private Map<String, Long> squareJ = new HashMap<String, Long>();
+    private  BasicDBList square = new BasicDBList();
 
 
     public SquaresSort() {
     }
 
-    public SquaresSort(int timeZone, int weekDay, double devProb, Map<String, Long> fileId, Map<String, Long> nSquare, Map<String, Long> squareI, Map<String, Long> squareJ) {
+    public SquaresSort(int timeZone, int weekDay, double devProb, Map<String, Long> fileId, Map<String, Long> nSquare, BasicDBList square) {
         this.timeZone = timeZone;
         this.weekDay = weekDay;
         this.devProb = devProb;
         this.fileId = fileId;
         this.nSquare = nSquare;
-        this.squareI = squareI;
-        this.squareJ = squareJ;
+        this.square = square;
     }
 
     public int getTimeZone() {
@@ -78,20 +77,12 @@ public class SquaresSort {
         this.nSquare = nSquare;
     }
 
-    public Map<String, Long> getSquareI() {
-        return squareI;
+    public BasicDBList getSquare() {
+        return square;
     }
 
-    public void setSquareI(Map<String, Long> squareI) {
-        this.squareI = squareI;
-    }
-
-    public Map<String, Long> getSquareJ() {
-        return squareJ;
-    }
-
-    public void setSquareJ(Map<String, Long> squareJ) {
-        this.squareJ = squareJ;
+    public void setSquare(BasicDBList square) {
+        this.square = square;
     }
 
     @Override
@@ -102,8 +93,7 @@ public class SquaresSort {
                 .append("devProb", devProb)
                 .append("fileId", fileId)
                 .append("nSquare", nSquare)
-                .append("squareI", squareI)
-                .append("squareJ", squareJ)
+                .append("square", square)
                 .toString();
     }
 }

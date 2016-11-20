@@ -44,8 +44,8 @@ public class FilterSubMeshImpl implements FilterSubMesh {
             filter.add("timeZone");
             filter.add("weekDay");
             filter.add("fileId");
-            filter.add("squareI");
-            filter.add("squareJ");
+            filter.add("square.i");
+            filter.add("square.j");
 
 
             mongoClient = new MongoClient("10.130.101.9", 27017);
@@ -54,35 +54,40 @@ public class FilterSubMeshImpl implements FilterSubMesh {
 
             // New way to get database
             MongoDatabase db = mongoClient.getDatabase("moto");
+            System.out.println(startCollectionName);
             MongoCollection<Document> collection = db.getCollection(startCollectionName);
 
             //Query MongoDB
             MongoCursor<Document> cursor = (MongoCursor<Document>) collection.find()
                     .projection(and(Projections.excludeId(), Projections.include(filter)))
-                    //.limit(50)
+                    //.sort(new Document("square.i",1))
+                    //.limit(10000)
                     .iterator();
 
 
             //int i = 1;
             try {
                 while (cursor.hasNext()) {
-///i++;
+                    //i++;
                     String json = cursor.next().toJson();
+                    //System.out.println(json);
                     ObjectMapper mapper = new ObjectMapper();
-                    SquaresSort squareId = mapper.readValue(json, SquaresSort.class);
+                   // SquaresSort squareId = mapper.readValue(json, SquaresSort.class);
 
                     if (!numberRepetition.containsKey(json)) { //проверяет есть ли в мапе json
                         numberRepetition.put(json, (long) 1);
                     } else {
                         numberRepetition.put(json, numberRepetition.get(json) + 1);
                     }
-                    mapper=null;
-                    squareId = null;
+
+                    mapper = null;
+                   // squareId = null;
                     json = null;
                     System.gc();
                     //System.out.println(i);
+
                 }
-               // mongoClient.close();
+                // mongoClient.close();
             } catch (Exception w) {
             } finally {
                 cursor.close();

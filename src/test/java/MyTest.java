@@ -39,16 +39,16 @@ public class MyTest {
 
             JSONObject obj = new JSONObject();
            // obj.put("nSquare", squareId.getnSquare());
-            obj.put("squareI", squareId.getSquareI());
-            obj.put("squareJ", squareId.getSquareJ());
+            obj.put("squareI", squareId.getSquare().get("i"));
+            obj.put("squareJ", squareId.getSquare().get("j"));
             obj.put("fileId", squareId.getFileId());
             obj.put("timeZone", squareId.getTimeZone());
             obj.put("weekDay", squareId.getWeekDay());
 
 
           //  obj1.put("nSquare", squareId.getnSquare());
-            obj1.put("squareI", squareId.getSquareI());
-            obj1.put("squareJ", squareId.getSquareJ());
+            obj1.put("squareI", squareId.getSquare().get("i"));
+            obj1.put("squareJ", squareId.getSquare().get("j"));
             obj1.put("timeZone", squareId.getTimeZone());
             obj1.put("weekDay", squareId.getWeekDay());
 
