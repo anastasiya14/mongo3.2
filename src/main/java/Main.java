@@ -2,16 +2,18 @@
 
 import Mesh.Interfaces.FilterSubMesh;
 import Mesh.Interfaces.Impl.FilterSubMeshImpl;
-import Mesh.Interfaces.Impl.SquareSortImpl;
-import routing.Impl.JSONtoDataImpl;
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.util.JSON;
+import org.bson.Document;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
 /**
@@ -24,28 +26,23 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        WorkWithMongo work = new WorkWithMongo();
-
-        final FilterSubMesh filterSubMesh = new FilterSubMeshImpl();
-        final SquareSortImpl squareSort = new SquareSortImpl();
-
         final List<String> startCollectionList = new ArrayList<String>();
         startCollectionList.add("preMesh_traffic_1");
         //startCollectionList.add("testMesh");
-        // startCollectionList.add("preMesh_traffic_2");
+        startCollectionList.add("preMesh_traffic_2");
         startCollectionList.add("preMesh_traffic_3");
-        // startCollectionList.add("preMesh_traffic_4");
-        //startCollectionList.add("preMesh_traffic_5");
+        startCollectionList.add("preMesh_traffic_4");
+        startCollectionList.add("preMesh_traffic_5");
         startCollectionList.add("preMesh_traffic_6");
         startCollectionList.add("preMesh_traffic_7");
 
 
         final List<String> endCollectionList = new ArrayList<String>();
         endCollectionList.add("mesh_1day");
-        //endCollectionList.add("mesh_2day");
+        endCollectionList.add("mesh_2day");
         endCollectionList.add("mesh_3day");
-        // endCollectionList.add("mesh_4day");
-        // endCollectionList.add("mesh_5day");
+        endCollectionList.add("mesh_4day");
+        endCollectionList.add("mesh_5day");
         endCollectionList.add("mesh_6day");
         endCollectionList.add("mesh_7day");
 
@@ -69,7 +66,7 @@ public class Main {
 
         int i = 0;
         for (String entry : startCollectionList) {
-            Runnable worker = new MyRunnable(entry, endCollectionList.get(i));
+            Runnable worker = new Parallel(entry, endCollectionList.get(i));
             executor.execute(worker);
             i++;
         }
@@ -79,56 +76,6 @@ public class Main {
 
         }
         System.out.println("\nFinished all threads");
-
-        // squareSort.numberFileIdinSquare(filterSubMesh.filterSubMesh());
-
-        // JSONtoDataImpl jsoNtoData = new JSONtoDataImpl();
-        // jsoNtoData.jsonToData();
     }
 }
 
-class NewThread implements Runnable {
-
-    public NewThread(String startCollectionName, String endCollectionName) throws IOException {
-
-        final FilterSubMesh filterSubMesh = new FilterSubMeshImpl();
-        final SquareSortImpl squareSort = new SquareSortImpl();
-
-        squareSort.createJSONforMesh(squareSort
-                .assessment(squareSort
-                        .numberFileIdinSquare(filterSubMesh
-                                .filterSubMesh(startCollectionName))), endCollectionName);
-
-    }
-
-    public void run() {
-
-    }
-
-
-}
-
-class MyRunnable implements Runnable {
-    private String startCollectionName;
-    private String endCollectionName;
-
-    MyRunnable(String startCollectionName, String endCollectionName) {
-        this.startCollectionName = startCollectionName;
-        this.endCollectionName = endCollectionName;
-    }
-
-
-    public void run() {
-        final FilterSubMesh filterSubMesh = new FilterSubMeshImpl();
-        final SquareSortImpl squareSort = new SquareSortImpl();
-
-        try {
-            squareSort.createJSONforMesh(squareSort
-                    .assessment(squareSort
-                            .numberFileIdinSquare(filterSubMesh
-                                    .filterSubMesh(startCollectionName))), endCollectionName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}

@@ -9,6 +9,6 @@ import java.util.Map;
  */
 public interface FilterSubMesh {
 
-    public Map<String, Long> filterSubMesh(String startCollectionName);
+    public Map<String, Long> filterSubMesh(String startCollectionName,String endCollectionName,Double timeZone,Double fileId);
 
 }
